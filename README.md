@@ -1,4 +1,4 @@
-#一个用angualrjs做前端，nodejs做中台的系统
+# 一个用angualrjs做前端，nodejs做中台的系统
 
 ## 技术栈
 * ### 前端技术
