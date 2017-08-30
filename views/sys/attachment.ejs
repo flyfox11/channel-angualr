@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <%-include ../public%>
+    <script type='text/javascript' src='/javascripts/attachment.js'></script>
+<body>
+<% include ../public %>
+<div class="container" style="margin-top:10px">
+    <div class="container" style="margin-top:4%">
+        <form id= "uploadForm" method="post" enctype="multipart/form-data" action="/attachmentNode">
+            <div class="form-group">
+                <span>上传文件： </span>
+                <input type="file" name="myfiles"/>
+            </div>
+            <input type="hidden" name="real_name" class="" value="赵强"/>
+            <input type="submit" class="btn btn-primary" value="上传"/>
+            <a href="/attachmentDown" >下载</a>
+        </form>
+        <!--<form action="/upload-single" method="post" enctype="multipart/form-data">
+            <h4>上传文件：</h4>
+            <input type="file" name="logo">
+            <input type="submit" value="提交">
+        </form>-->
+        <div class="download-box" style="margin-top: 100px">
+            <h4>所有下载文件<sub>(点击文件名进行下载)</sub> </h4>
+            <div class="down-box">
+                <ul class="down-list">
+                    <% for(var i=0; i<result.length;i++){%>
+                       <li id='<%= result[i].id %>'><a href="http://59.110.42.180:8081/myrisk/admin/download.service?path=<%= result[i].filepath %>"><%= result[i].filename %></a><span>上传时间</span><span><%= result[i].filetime %></span><span>上传人</span><span><%= result[i].username %></span></li>
+                    <%}%>
+                    <!--<li><a href=""></a></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<body>

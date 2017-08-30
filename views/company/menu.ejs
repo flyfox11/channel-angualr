@@ -1,0 +1,15 @@
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/company/init">数据管理</a></li>
+    <li><a href="/company/companyInfoQuery">企业信息查询</a></li>
+    <li><a href="/company/order">订单管理</a></li>
+    <li><a href="/company/loan">贷款管理</a></li>
+</ul>
+<script>
+    <%if(!!locals.showTob){%>
+    $("#myTab li").each(function () {
+        if ($(this).find('a').text() == '<%=showTob.title%>') {
+            $(this).addClass('active');
+        }
+    });
+    <%}%>
+</script>

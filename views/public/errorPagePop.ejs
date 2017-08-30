@@ -1,0 +1,37 @@
+<script>
+    <% if(!!locals.Dialog){ %>
+    jDialog.dialog({
+        title: '<%= Dialog.title %>',
+        content: '<%= Dialog.content %>',
+        buttons: [
+            {
+                type: 'highlight',
+                text: '确定',
+                handler: function (button, dialog) {
+                    dialog.close();
+                }
+            }
+        ]
+    });
+    <% } %>
+    <% if(!!locals.pwdDialog){ %>
+    jDialog.dialog({
+        title: '<%= pwdDialog.title %>',
+        content: '<%= pwdDialog.content %>',
+        buttons: [
+            {
+                type: 'highlight',
+                text: '确定',
+                handler: function (button, dialog) {
+                    dialog.close();
+                }
+            }
+        ]
+    });
+    //自动弹出密码修改框
+    $(".j-dialog-mask ").css({'z-index':2000});
+    $(".j-dialog-shadow ").css({'z-index':2001});
+    $('#edit-pwd-model').modal('show');
+    <% } %>
+</script>
+<%- include ./page %>

@@ -1,0 +1,11 @@
+<script type="text/javascript">
+    <% if(!!locals.pageList && !!locals.pageList.current){ %>
+    $(".tcdPageCode").createPage({
+        pageCount: '<%= locals.pageList.pages %>',
+        current: '<%= locals.pageList.current %>',
+        total: '<%= locals.pageList.total %>',
+        urlSegment: '<%= locals.pageList.url %>',
+        tab: '<%= locals.pageList.tab %>'
+    });
+    <% } %>
+</script>

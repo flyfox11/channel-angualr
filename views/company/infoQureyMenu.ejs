@@ -1,0 +1,13 @@
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/company/companyInfoQuery">企业额度查询</a></li>
+    <li><a href="/company/projectQuery">项目额度查询</a></li>
+</ul>
+<script>
+    <%if(!!locals.showTob){%>
+    $("#myTab li").each(function () {
+        if ($(this).find('a').text() == '<%=showTob.title%>') {
+            $(this).addClass('active');
+        }
+    });
+    <%}%>
+</script>

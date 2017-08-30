@@ -1,0 +1,20 @@
+<!--------------------------------- 主要经营者 ------------------------------->
+<div ng-controller="MainManagerController">
+    <div ng-switch="data.viewFlag">
+        <div ng-switch-when="0">
+            {% include "templates/customerInfo/main_manager/manager_list.html" %}
+        </div>
+        <div ng-switch-when="1">
+            {% include "templates/customerInfo/main_manager/edit_manager.html" %}
+        </div>
+        <div ng-switch-when="2">
+            {% include "templates/customerInfo/main_manager/brief_list.html" %}
+        </div>
+        <div ng-switch-when="3">
+            {% include "templates/customerInfo/main_manager/edit_brief.html" %}
+        </div>
+        <div ng-switch-default>
+            {% include "templates/customerInfo/main_manager/manager_list.html" %}
+        </div>
+    </div>
+</div>

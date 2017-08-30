@@ -1,0 +1,74 @@
+<!--------------------------------- 企业概况 列表 ------------------------------->
+
+<div class="row" >
+    <div style="padding-left:14px;">
+        <button type="button" class="btn btn-success btn-sm" ng-click="action.addRow()"><span
+                class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+        <button type="button" class="btn btn-success btn-sm"  ng-click="action.updateRow()"><span
+                class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+        </button>
+        <button type="button" class="btn btn-success btn-sm" ng-click="action.deleteRow()"><span
+                class="glyphicon glyphicon-minus" aria-hidden="true" ></span>删除
+        </button>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header" data-background-color="green">
+        <h4 class="title"><strong>企业概况列表</strong></h4>
+    </div>
+    <div class="card-content table-responsive">
+        <table class="table table-striped table-hover table-condensed table-bordered">
+            <thead class="text-primary">
+            <tr>
+                <th>公司名称</th>
+                <th>成立日期</th>
+                <th>法人</th>
+                <th>企业性质</th>
+                <th>注册资本</th>
+                <th>实收资本</th>
+                <th>信用等级</th>
+                <th>注册地址</th>
+                <th>实际经营地址</th>
+                <th>经营地房屋属性</th>
+                <th>联系方式</th>
+                <th>主营业务</th>
+                <th>产品产销盈利模式</th>
+                <th>贷款卡号</th>
+                <th>股权结构</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="info in data.Infos" ng-class="{'tabalTrActive':data.selectedRowIndex==$index}" ng-click="action.selectRow($index)">
+                    <td>{$info.company_name$}</td>
+                    <td>{$info.create_date$}</td>
+                    <td>{$info.legal_person$}</td>
+                    <td>{$info.company_nature$}</td>
+                    <td>{$info.registered_capital$}</td>
+                    <td>{$info.paid_up_capital$}</td>
+                    <td>{$info.credit_level$}</td>
+                    <td>{$info.registered_addres$}</td>
+                    <td>{$info.operating_address$}</td>
+                    <td>{$info.operating_housing_properties$}</td>
+                    <td>{$info.contact$}</td>
+                    <td>{$info.main_biz$}</td>
+                    <td>{$info.profit_model$}</td>
+                    <td>{$info.loan_card$}</td>
+                    <td><a href="#" ng-click="action.getOwnershipStructures($event,info.company_id)">股权结构</a></td>
+                    <td>{$info.remark$}</td>
+                </tr>
+                <tr ng-show="data.Infos.length==0">
+                    <td colspan="16">暂无数据</td>
+                </tr>
+            </tbody>
+        </table>
+        <footer class="footer_pagination text-right" ng-if="data.total_pages >= 1">
+            <ul uib-pagination ng-model="data.current_page" max-size="6" total-items="data.total_items"
+                items-per-page="10" num-pages="data.total_pages" class="pagination-sm"
+                ng-change="action.getDataByPage()"  boundary-links="true" boundary-link-numbers="true" previous-text="上一页"
+                next-text="下一页" first-text="首页" last-text="尾页"></ul>
+        </footer>
+    </div>
+</div>
+

@@ -1,0 +1,215 @@
+
+.form-inline .form-group{
+    margin-bottom: 6px;
+}
+.row .btn-success{
+    margin: 10px 0;
+}
+
+.table .checkbox {
+    margin: 0 auto;
+}
+.navbar-absolute{
+    position: relative;
+}
+
+/*button 图标样式重置*/
+.btn_icon{
+    position: relative;
+    right: 6px;
+    top: 2px;
+}
+
+/*select 样式重置*/
+.select_normal{
+    width: 175px;
+    height: 28px;
+}
+
+.table_info {
+    border-collapse: separate;
+    border-spacing: 5px;
+    width: 80%;
+    margin: 0 auto;
+}
+.table_info th {
+    min-width: 165px;
+    text-align: right;
+    height: 30px;
+    padding-right: 4px;
+    font-weight: normal;
+    font-size: 14px;
+    color: #333;
+}
+.normal_table{
+    overflow: auto;
+}
+.normal_table th,.normal_table td{
+    width: 180px;
+    text-align: center;
+}
+
+
+/*产品管理详情*/
+.pay_order {
+    margin-top: 35px;
+    width: 60%;
+    border-collapse: collapse;
+}
+.pay_order .fl {
+    float: left;
+}
+.pay_order .order_control {
+    padding: 0 20px;
+}
+.pay_order .order_control1 span {
+    display: block;
+    margin-bottom: 10px;
+}
+.pay_order .element {
+    min-width: 96px;
+    height: 168px;
+    padding: 10px 0 10px 10px;
+    border: 1px solid #E4E4E4;
+}
+
+
+element.style {
+}
+.pay_order .order_control input {
+    outline: none;
+    width: 72px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #F06247;
+    border-radius: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+}
+
+.order_control span{
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+.upload_control label{
+    position: relative;
+    right: 2px;
+    top: -2px;
+}
+/*上传文件样式美化*/
+.file {
+    position: relative;
+    display: inline-block;
+}
+/*表头、列居中*/
+.table th,.table td{
+    text-align: center;
+}
+.table .num_col{
+    text-align: right;
+}
+
+/*label颜色重置*/
+label{
+    color:black!important;
+}
+
+
+
+html,body {
+    height:100%;
+}
+.main_container {
+    min-height:100%;
+    position:relative;
+}
+.investment_f {
+    padding-bottom:0px;   /* Height of the footer */
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    border: none!important;
+}
+/*选中行样式*/
+.tabalTrActive {
+    background: #2b669a !important;
+    color: #fff;
+}
+/*分页样式*/
+.pagination{
+    margin-bottom:0!important;
+}
+.footer_pagination{
+    padding:0!important;
+}
+/*表单错误样式*/
+.error_info{
+    color:red;
+}
+/*解决分页和card冲突*/
+.card{
+    position: initial!important;
+}
+td a{
+    color:green;
+    text-decoration:underline;
+}
+td a:hover{
+    color:blue;
+    text-decoration:underline;
+}
+
+.query_form{
+    width: 60%;
+    margin: 140px auto;
+}
+.edit_tr input{
+    width:100%
+}
+.table_avg{
+   margin-top: 20px;
+}
+.table_avg th,.table_avg td{
+    width: 25%;
+}
+.fa-fw{
+    font-size: 20px;
+    float: right;
+    padding-bottom: 10px;
+    padding-right: 30px;
+    margin-top: 20px;
+    color:#8D8880;
+}
+
+.tip_title{
+    margin: 8px 0px;
+    padding-top: 28px;
+}
+.tip_title .fa{
+    font-size: 20px;
+    color:blueviolet;
+}
+.btn_blue{
+    background: #505dff !important;
+}
+.btn_add{
+    margin-right: 20px;
+}
+.flex_container{
+    display: flex;
+    margin-top: 18px;
+    font-size: 18px;
+}
+.flex_item{
+    /*flex-grow: 1;*/
+    flex-basis: 33.33%;
+}

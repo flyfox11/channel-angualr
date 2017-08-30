@@ -1,0 +1,24 @@
+@charset "utf-8";
+.investment_f{ width:100%; margin:0px auto}
+.investment_f .investment_title{height:44px;  width:100%; overflow:hidden}
+.investment_title div{ float:left; margin-right:6px; display:inline; font-size:14px; font-weight:bold; text-align:center; line-height:46px; color:#555; cursor:pointer; margin-left:1px;}
+.investment_title a,.investment_title a:link,.investment_title a:visited{ color:#337ab7;padding: 0px 30px;display:inline-block;text-decoration: none;font-size: 16px}
+.investment_title a:focus,.investment_title a:hover{ background:#337ab7;color:#fff;border-radius: 4px}
+
+.investment_title div.on a,.investment_title div.on a:link,.investment_title div.on a:visited,.investment_title div.on a:hover{ color:white;background:#337ab7;border-radius: 4px}
+.investment_title div.on{ color:#f70}
+.investment_con{ clear:both;  border:1px solid #EDEDED;padding:20px;}
+.page_pointer{width: 30px;  display: inline-block;  font-size: 23px;  text-align: right;  color: blue;}
+.table td{
+    word-break: keep-all;
+    white-space: nowrap
+}
+.table th{
+    word-break: keep-all;
+    white-space: nowrap
+}
+.pos-right{
+    position: absolute;
+    top: 13px;
+    right:20px;
+}

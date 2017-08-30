@@ -1,0 +1,62 @@
+<%- include ../system/changePwd %>
+<div class="sidebar" data-color="red" data-image="../md/img/sidebar-1.jpg">
+    <div class="logo">
+        <a href="#" class="simple-text">
+            <!--<i class="material-icons sys-icon" style="color: #216bc9;">remove_red_eye</i>-->
+            <img src="../md/img/conduit.ico" style="width:30px;height:30px">
+            &nbsp;&nbsp;
+            <span id="hoverLogout">渠道自助系统</span>
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav" id="menu_nav">
+            <li>
+                <a href="/company/companyQueryView">
+                    <i class="glyphicon glyphicon-list-alt" style="color: #fb241f;"></i>
+
+                    <p>信息查询</p>
+                </a>
+            </li>
+            <li>
+                <a href="/company/loanQueryView">
+                    <i class="glyphicon glyphicon-usd" style="color: #fb241f;"></i>
+
+                    <p>贷款管理</p>
+                </a>
+            </li>
+            <li>
+                <a href="/company/companyDataQueryView">
+                    <i class="glyphicon glyphicon-credit-card" style="color: #fb241f;"></i>
+
+                    <p>数据管理</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    //    $("#hoverLogout").hover(function () {
+    //        $(this).text('点击退出系统');
+    //    }, function () {
+    //        $(this).text('渠道自助系统');
+    //    })
+</script>
+<script>
+    <% if(!!locals.title){ %>
+    $("#menu_nav li").each(function () {
+        if ($(this).find('p').text() == '<%=locals.title%>') {
+            $(this).addClass('active');
+            $(this).find('i').css({"color": "#fff"});
+        }
+    });
+    <% } %>
+</script>
+<style>
+    .tabalTrActive {
+        background: #2b669a !important;
+        color: #fff;
+    }
+    .bp-select-gradient{
+        background: linear-gradient(to bottom,#C0C0C0, white) !important;
+    }
+</style>

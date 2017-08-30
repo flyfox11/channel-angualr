@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<%-include ../public%>
+<body>
+<div class="wrapper">
+    <%-include ../public%>
+    <div class="main-panel">
+        <% include ../public %>
+        <div style="padding: 14px">
+          <div style="overflow: auto">
+              <table class="table table-striped table-hover table-condensed table-bordered">
+                  <thead>
+                    <tr>
+                      <th>序号</th>
+                      <th>姓名</th>
+                      <th>手机号</th>
+                      <th>邮箱</th>
+                      <th>申请日期</th>
+                      <th>申请期数</th>
+                      <th>申请金额</th>
+                      <th>贷款余额</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rentData">
+                      <% for(var i=0; i<result.length;i++){%>
+                      <tr>
+                          <td><%= pageCurrent*10-10+i+1 %></td>
+                          <td><%= result[i].name %></td>
+                          <td><%= result[i].mobile%></td>
+                          <td><%= result[i].email%></td>
+                          <td><%= result[i].apply_date%></td>
+                          <td><%= result[i].apply_periods%></td>
+                          <td><%= result[i].apply_amt%></td>
+                          <td><%= result[i].loan_amt%></td>
+                          <td><!--<a class="btn btn-sm btn-success" href="/rentcheck?id=<%= result[i].id%>&type=1" id="pj">评价</a> --><a class="btn btn-sm btn-success" href="/rentcheck?id=<%= result[i].id%>&type=2" id="ck">查看</a></td>
+
+                      </tr>
+                      <%}%>
+                  </tbody>
+              </table>
+              <!--/分页-->
+              <% if (pager!=null) { %>
+              <ul class="pagination pagination-centered" style="margin-top:20px; float: right">
+                  <li class="disabled" style="margin-right:5px"><a href="javascript:void(0)"> 共<%=pager.total%>条</a></li>
+                  <li class="disabled" style="margin-right:5px"><a href="javascript:void(0)"> 总<%=parseInt(Math.ceil(parseFloat(pager.total) / 10))%>页</a></li>
+                  <%if(pager.total==0){%>
+                  <li class="disabled" style="margin-right:5px"><a href="javascript:void(0)">首页</a></li>
+                  <%}else{%>
+                  <li style="margin-right:5px"><a href="<%=pager.pagePath%>index?page=1">首页</a></li>
+                  <%}%>
+                  <!--判断有没有前一页-->
+
+                  <%if(pageCurrent==1){%>
+                  <li class="disabled" style="margin-right:5px"><a href="javascript:void(0)">上一页</a></li>
+                  <%}else{%>
+                  <%if(pager.total==0){%>
+                  <li class="disabled"><a href="javascript:void(0)">上一页</a></li>
+                  <%}else{%>
+                  <li><a href="<%=pager.pagePath%>index?page=<%=parseInt(pageCurrent)-1%>">上一页</a></li>
+                  <%}%>
+                  <%}%>
+                  <!--判断有没有前一页  end-->
+                  <!--判断有没有下一页-->
+                  <%if(pageCurrent==parseInt(Math.ceil(parseFloat(pager.total) / 10))){%>
+                  <li class="disabled" style="margin-right:5px"><a href="javascript:void(0)">下一页</a></li>
+                  <%}else{%>
+                  <%if(pager.total==0){%>
+                  <li class="disabled" style="margin-right:5px"><a href="javascript:void(0)">下一页</a></li>
+                  <%}else{%>
+                  <li style="margin-right:5px"><a  href="<%=pager.pagePath%>index?page=<%=parseInt(pageCurrent)+1%>">下一页</a></li>
+                  <%}%>
+
+                  <%}%>
+                  <!--判断有没有下一页  end-->
+                  <%if(pager.total==0){%>
+                  <li class="disabled" style="margin-right:5px"><a href="javascript:void(0)">尾页</a></li>
+                  <%}else{%>
+                  <li><a href="<%=pager.pagePath%>index?page=<%=parseInt(Math.ceil(parseFloat(pager.total) / 10))%>">尾页</a></li>
+                  <%}%>
+              </ul>
+              <% } %>
+          </div>
+      </div>
+    </div>
+</div><!-- wrapper end-->
+<body>

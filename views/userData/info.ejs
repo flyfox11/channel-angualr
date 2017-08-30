@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<%- include ../public/header %>
+<body>
+<div class="wrapper">
+    <%- include ../public/sidebar %>
+    <div class="main-panel">
+        <div class="investment_f">
+            <% include ./menu %>
+            <div id="myTabContent" class="tab-content" style="text-align: center; padding-top: 20px">
+                <div class="tab-pane fade in active" id="customerInfo">
+                    <div style="padding: 14px">
+                        <table class="table table-striped table-hover table-condensed table-bordered">
+                            <thead>
+                            <tr>
+                                <td>导入信息</td>
+                                <td>手机号</td>
+                                <td>登记注册号</td>
+                                <td>注册资本币种</td>
+                                <td>注册资本(元)</td>
+                                <td>经营状况</td>
+                            </tr>
+                            </thead>
+                            <tbody id="roleData">
+                            <tr>
+                                <td>无上科技</td>
+                                <td>10086</td>
+                                <td>10235655485964</td>
+                                <td>人民币</td>
+                                <td>254864213</td>
+                                <td>盈利</td>
+                            </tr>
+                            <tr>
+                                <td>无上科技</td>
+                                <td>10086</td>
+                                <td>10235655485964</td>
+                                <td>人民币</td>
+                                <td>254864213</td>
+                                <td>盈利</td>
+                            </tr>
+                            <tr class="no_data">
+                                <td colspan='7'>暂无数据!</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../public/errorPagePop %>
+</body>
+</html>

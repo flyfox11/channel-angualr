@@ -1,0 +1,529 @@
+<!--------------------------------- 客户基本情况 ------------------------------->
+
+<div style="padding: 30px 0" ng-controller="CustomerInfoController" ng-init="initData={{data}}">
+    <!--融资产品信息-->
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title"><strong>融资产品信息</strong></h4>
+        </div>
+        <div class="card-content table-responsive">
+            <!--正常状态-->
+            <div class="row" ng-if="data.isApplyEdit">
+                <a  href="javascript:;" ng-click="action.deleteApply(data.apply.applyer_id)"
+                ><i class="fa fa-trash  fa-fw" aria-hidden="true" ></i>
+                </a>
+                <a  href="javascript:;" ng-click="action.editApply()"
+                ><i class="fa fa-pencil  fa-fw" aria-hidden="true" ></i>
+                </a>
+            </div>
+            <!--编辑状态-->
+            <div class="row" ng-if="!data.isApplyEdit">
+                <a  href="javascript:;" ng-click="action.cancelApply()"
+                ><i class="fa fa-undo  fa-fw" aria-hidden="true" ></i>
+                </a>
+                <a  href="javascript:;" ng-click="action.updateApply()"
+                ><i class="fa fa-check  fa-fw" aria-hidden="true" ></i>
+                </a>
+            </div>
+
+            <table class="table  table-condensed table-bordered table_avg">
+                <tr>
+                    <th>申请人</th>
+                    <td  ng-if="data.isApplyEdit">
+                        {$data.apply.applyer_name$}
+
+                    </td>
+                    <td ng-if="!data.isApplyEdit"><input type="text" ng-model="data.editApply.applyer_name"></td>
+
+                    <th>申请融资金额(万元)</th>
+                    <td  ng-if="data.isApplyEdit">
+                        {$data.apply.apply_amt$}
+                    </td>
+                    <td ng-if="!data.isApplyEdit"><input type="text" ng-model="data.editApply.apply_amt"></td>
+                </tr>
+                <tr>
+                    <th>融资期限</th>
+                    <td  ng-if="data.isApplyEdit">
+                        {$data.apply.loan_period$}
+                    </td>
+                    <td ng-if="!data.isApplyEdit"><input type="text" ng-model="data.editApply.loan_period"></td>
+                    <th>授信期限</th>
+                    <td  ng-if="data.isApplyEdit">
+                        {$data.apply.credit_period$}
+                    </td>
+                    <td ng-if="!data.isApplyEdit"><input type="text" ng-model="data.editApply.credit_period"></td>
+                </tr>
+                <tr>
+                    <th>还款方式</th>
+                    <td  ng-if="data.isApplyEdit">
+                        {$data.apply.repayment$}
+                    </td>
+                    <td ng-if="!data.isApplyEdit"><input type="text" ng-model="data.editApply.repayment"></td>
+                    <th>综合费率</th>
+                    <td  ng-if="data.isApplyEdit">
+                        {$data.apply.rates$}
+                    </td>
+                    <td ng-if="!data.isApplyEdit"><input type="text" ng-model="data.editApply.rates"></td>
+                </tr>
+                <tr>
+                    <th>业务调查人</th>
+                    <td  ng-if="data.isApplyEdit">
+                        {$data.apply.investigator$}
+                    </td>
+                    <td ng-if="!data.isApplyEdit"><input type="text" ng-model="data.editApply.investigator"></td>
+                    <!--<th>备注</th>
+                    <td  ng-if="data.isApplyEdit">
+                        {$data.apply.remark$}
+                    </td>
+                    <td ng-if="!data.isApplyEdit"><input type="text" ng-model="data.editApply.remark"></td>-->
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td   colspan="3" ng-if="data.isApplyEdit">
+                        {$data.apply.remark$}
+                    </td>
+                    <td colspan="3" ng-if="!data.isApplyEdit">
+                        <textarea   cols="95" rows="3" ng-model="data.editApply.remark"></textarea>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <!--企业概况-->
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title"><strong>企业概况</strong></h4>
+        </div>
+        <div class="card-content table-responsive">
+            <!--正常状态-->
+            <div class="row" ng-if="data.isCompanyEdit">
+                <a  href="javascript:;" ng-click="action.deleteCompany(data.company.company_id)"
+                ><i class="fa fa-trash  fa-fw" aria-hidden="true" ></i>
+                </a>
+                <a  href="javascript:;" ng-click="action.editCompany()"
+                ><i class="fa fa-pencil  fa-fw" aria-hidden="true" ></i>
+                </a>
+            </div>
+            <!--编辑状态-->
+            <div class="row" ng-if="!data.isCompanyEdit">
+                <a  href="javascript:;" ng-click="action.cancelCompany()"
+                ><i class="fa fa-undo  fa-fw" aria-hidden="true" ></i>
+                </a>
+                <a  href="javascript:;" ng-click="action.updateCompany()"
+                ><i class="fa fa-check  fa-fw" aria-hidden="true" ></i>
+                </a>
+            </div>
+            <table class="table  table-condensed table-bordered table_avg">
+                <tr>
+                    <th>公司名称</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.company_name$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.company_name"></td>
+                    <th>成立日期</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.create_date$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit">
+                        <!--<input type="text" ng-model="data.editCompany.create_date" id="myDiv">-->
+                        <date-time-picker  ng-model="data.editCompany.create_date" position="bottom-right" start=""></date-time-picker>
+                    </td>
+                </tr>
+                <tr>
+                    <th>法人</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.legal_person$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.legal_person"></td>
+                    <th>企业性质</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.company_nature$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit">
+                        <!--<input type="text" ng-model="data.editCompany.company_nature">-->
+                        <select class="select_normal" ng-init="data.company.company_nature = data.natureNames[0]" ng-model="data.editCompany.company_nature" ng-options="x for x in data.natureNames">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>注册资本(万元)</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.registered_capital$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.registered_capital"></td>
+                    <th>实收资本(万元)</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.paid_up_capital$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.paid_up_capital"></td>
+                </tr>
+                <tr>
+                    <th>信用等级</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.credit_level$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.credit_level"></td>
+                    <th>注册地址</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.registered_addres$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.registered_addres"></td>
+                </tr>
+
+
+                <tr>
+                    <th>实际经营地址</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.operating_address$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.operating_address"></td>
+                    <th>经营地房屋属性</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.operating_housing_properties$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit">
+                        <!--<input type="text" ng-model="data.editCompany.operating_housing_properties">-->
+                        <select class="select_normal" ng-init="data.company.operating_housing_properties = data.housingPropertiesNames[0]" ng-model="data.editCompany.operating_housing_properties" ng-options="x for x in data.housingPropertiesNames">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>联系方式</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.contact$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.contact"></td>
+                    <th>主营业务</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.main_biz$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.main_biz"></td>
+                </tr>
+                <tr>
+                    <th>产品产销盈利模式</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.profit_model$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.profit_model"></td>
+                    <th>贷款卡号</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.loan_card$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.loan_card"></td>
+                </tr>
+                <tr>
+                    <th>渠道名称</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.channel_name$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.channel_name"></td>
+                    <!--<th>备注</th>
+                    <td   ng-if="data.isCompanyEdit">
+                        {$data.company.remark$}
+                    </td>
+                    <td ng-if="!data.isCompanyEdit"><input type="text" ng-model="data.editCompany.remark"></td>-->
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td   colspan="3" ng-if="data.isCompanyEdit">
+                        {$data.company.remark$}
+                    </td>
+                    <td colspan="3" ng-if="!data.isCompanyEdit">
+                        <textarea   cols="95" rows="3" ng-model="data.editCompany.remark"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <!--股权结构列表-->
+            <div class="row tip_title">
+                <a
+                   ><i class="fa fa-stumbleupon" aria-hidden="true" >股权结构</i>
+                </a>
+            </div>
+            <!--股权结构-->
+            <div class="brief_list" ng-repeat="info in data.ownershipList">
+                <!--正常状态-->
+                <div class="row" ng-if="data.selectedRowIndex1!=$index">
+                    <a  href="javascript:;" ng-click="action.deleteRow1($index)"
+                       ><i class="fa fa-trash  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                    <a  href="javascript:;" ng-click="action.editRow1($index)"
+                        ><i class="fa fa-pencil  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                </div>
+                <!--编辑状态-->
+                <div class="row" ng-if="data.selectedRowIndex1==$index">
+                    <a  href="javascript:;" ng-click="action.cancelRow1()"
+                    ><i class="fa fa-undo  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                    <a  href="javascript:;" ng-click="action.updateRow1()"
+                    ><i class="fa fa-check  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                </div>
+                <table class="table table-condensed table-bordered table_avg" >
+                    <tr>
+                        <th>股东名称</th>
+                        <td  ng-if="data.selectedRowIndex1!=$index">
+                            {$info.name$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex1==$index"><input type="text" ng-model="data.editOwnership.name"></td>
+                        <th>认缴出资额(万元)</th>
+                        <td  ng-if="data.selectedRowIndex1!=$index">
+                            {$info.amt$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex1==$index"><input type="text" ng-model="data.editOwnership.amt"></td>
+                    </tr>
+
+                    <tr>
+                        <th>出资比例</th>
+                        <td  ng-if="data.selectedRowIndex1!=$index">
+                            {$info.funded_ratio$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex1==$index"><input type="text" ng-model="data.editOwnership.funded_ratio"></td>
+                        <th>出资日期</th>
+                        <td  ng-if="data.selectedRowIndex1!=$index">
+                            {$info.condate$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex1==$index">
+                            <!--<input type="text" ng-model="data.editOwnership.condate">-->
+                            <date-time-picker  ng-model="data.editOwnership.condate" position="top-right" start=""></date-time-picker>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--股权结构 新增表-->
+            <table class="table table-condensed table-bordered table_avg" ng-if="!data.isOwnerShipAdd">
+                <tr>
+                    <th>股东名称</th>
+                    <td><input type="text"  ng-model="data.ownership.name"></td>
+
+                    <th>认缴出资额(万元)</th>
+                    <td><input type="text"  ng-model="data.ownership.amt"></td>
+                </tr>
+
+                <tr>
+                    <th>出资比例</th>
+                    <td><input type="text"  ng-model="data.ownership.funded_ratio"></td>
+
+                    <th>出资日期</th>
+                    <td>
+                        <!--<input type="text"  ng-model="data.ownership.condate">-->
+                        <date-time-picker  ng-model="data.ownership.condate" position="top-right" start=""></date-time-picker>
+                    </td>
+                </tr>
+
+            </table>
+            <div class="row text-center" ng-if="data.isOwnerShipAdd">
+                <button type="button" class="btn btn-success btn-sm" ng-click="action.addRow1()"><span
+                        class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                </button>
+            </div>
+            <div class="row text-center" ng-if="!data.isOwnerShipAdd">
+                <button type="button" class="btn btn-success btn-sm" ng-click="action.saveRow1()">保存
+                </button>
+                <button type="button" class="btn btn-sm" ng-click="action.cancelRow1()">取消
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--实际控制人-->
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title"><strong>实际控制人</strong></h4>
+        </div>
+        <div class="card-content table-responsive">
+            <!--正常状态-->
+            <div class="row" ng-if="data.isManagerEdit">
+                <a  href="javascript:;" ng-click="action.deleteManager(data.manager.person_id)"
+                     ><i class="fa fa-trash  fa-fw" aria-hidden="true" ></i>
+                </a>
+                <a  href="javascript:;" ng-click="action.editManager()"
+                   ><i class="fa fa-pencil  fa-fw" aria-hidden="true" ></i>
+                </a>
+            </div>
+            <!--编辑状态-->
+            <div class="row" ng-if="!data.isManagerEdit">
+                <a  href="javascript:;" ng-click="action.cancelManager()"
+                ><i class="fa fa-undo  fa-fw" aria-hidden="true" ></i>
+                </a>
+                <a  href="javascript:;" ng-click="action.updateManager()"
+                ><i class="fa fa-check  fa-fw" aria-hidden="true" ></i>
+                </a>
+            </div>
+            <table class="table table-condensed table-bordered table_avg">
+                <tr>
+                    <th>证件号码</th>
+                    <td ng-if="data.isManagerEdit">
+                        {$data.manager.idcard$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.idcard" ng-blur="action.getAge()"></td>
+                    <th>实际控制人姓名</th>
+                    <td ng-if="data.isManagerEdit">
+                        {$data.manager.name$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.name"></td>
+                </tr>
+
+                <tr>
+                    <th>性别</th>
+                    <td ng-if="data.isManagerEdit">
+                        {$data.manager.sex$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit">
+                        <!--<input type="text" ng-model="data.editManager.sex">-->
+                        <select class="select_normal" ng-init="data.manager.sex = data.sexNames[0]" ng-model="data.editManager.sex" ng-options="x for x in data.sexNames">
+                        </select>
+                    </td>
+                    <th>电话</th>
+                    <td  ng-if="data.isManagerEdit">
+                        {$data.manager.tel$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.tel"></td>
+                </tr>
+                <tr>
+                    <th>电子邮箱</th>
+                    <td  ng-if="data.isManagerEdit">
+                        {$data.manager.email$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.email"></td>
+                    <th>从业年限</th>
+                    <td  ng-if="data.isManagerEdit">
+                        {$data.manager.years_of_service$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.years_of_service"></td>
+                </tr>
+                <tr>
+                    <th>年龄</th>
+                    <td  ng-if="data.isManagerEdit">
+                        {$data.manager.age$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.age"></td>
+                    <th>配偶姓名</th>
+                    <td  ng-if="data.isManagerEdit">
+                        {$data.manager.spouse_name$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.spouse_name"></td>
+                </tr>
+                <tr>
+                    <th>配偶工作单位</th>
+                    <td  ng-if="data.isManagerEdit">
+                        {$data.manager.spouse_work_unit$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.spouse_work_unit"></td>
+                    <!--<th>备注</th>
+                    <td  ng-if="data.isManagerEdit">
+                        {$data.manager.remark$}
+                    </td>
+                    <td ng-if="!data.isManagerEdit"><input type="text" ng-model="data.editManager.remark"></td>-->
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td   colspan="3" ng-if="data.isManagerEdit">
+                        {$data.manager.remark$}
+                    </td>
+                    <td colspan="3" ng-if="!data.isManagerEdit">
+                        <textarea   cols="95" rows="3" ng-model="data.editManager.remark"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <!--从业经历列表-->
+            <div class="row tip_title">
+                <a
+                ><i class="fa fa-briefcase" aria-hidden="true" >从业经历</i>
+                </a>
+            </div>
+            <!--从业经历-->
+            <div class="brief_list" ng-repeat="info in data.briefList">
+                <!--正常状态-->
+                <div class="row" ng-if="data.selectedRowIndex2!=$index">
+                    <a  href="javascript:;" ng-click="action.deleteRow2($index)"
+                        id="delete_brief" ><i class="fa fa-trash  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                    <a  href="javascript:;" ng-click="action.editRow2($index)"
+                        id="edit_brief"><i class="fa fa-pencil  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                </div>
+                <!--编辑状态-->
+                <div class="row" ng-if="data.selectedRowIndex2==$index">
+                    <a  href="javascript:;" ng-click="action.cancelRow2()"
+                    ><i class="fa fa-undo  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                    <a  href="javascript:;" ng-click="action.updateRow2()"
+                    ><i class="fa fa-check  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                </div>
+                <table class="table table-condensed table-bordered table_avg" >
+                    <tr>
+                        <th>开始日期</th>
+                        <td ng-if="data.selectedRowIndex2!=$index">
+                            {$info.start_date$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex2==$index">
+                            <!--<input type="text" ng-model="data.brief.start_date">-->
+                            <date-time-picker  ng-model="data.editBrief.start_date" position="top-right" start=""></date-time-picker>
+                        </td>
+                        <th>结束日期</th>
+                        <td ng-if="data.selectedRowIndex2!=$index">
+                            {$info.end_date$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex2==$index">
+                            <!--<input type="text"  ng-model="data.editBrief.end_date">-->
+                            <date-time-picker  ng-model="data.editBrief.end_date" position="top-right" start="data.brief.start_date"></date-time-picker>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>工作单位</th>
+                        <td ng-if="data.selectedRowIndex2!=$index">
+                            {$info.company_name$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex2==$index"> <input type="text" ng-model="data.editBrief.company_name"></td>
+                        <th>职务</th>
+                        <td ng-if="data.selectedRowIndex2!=$index">
+                            {$info.position$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex2==$index"><input type="text"  ng-model="data.editBrief.position"></td>
+                    </tr>
+
+                </table>
+            </div>
+            <!--从业经历 新增表-->
+            <table class="table table-condensed table-bordered table_avg" ng-if="!data.isBriefAdd">
+                <tr>
+                    <th>开始日期</th>
+                    <td>
+                        <!--<input type="text"  ng-model="data.brief.start_date">-->
+                        <date-time-picker  ng-model="data.brief.start_date" position="top-right" start=""></date-time-picker>
+                    </td>
+
+                    <th>结束日期</th>
+                    <td>
+                        <!--<input type="text"  ng-model="data.brief.end_date">-->
+                        <date-time-picker  ng-model="data.brief.end_date" position="top-right" start="data.brief.start_date"></date-time-picker>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>工作单位</th>
+                    <td><input type="text"  ng-model="data.brief.company_name"></td>
+
+                    <th>职务</th>
+                    <td><input type="text"  ng-model="data.brief.position"></td>
+                </tr>
+
+            </table>
+            <div class="row text-center" ng-if="data.isBriefAdd">
+                <button type="button" class="btn btn-success btn-sm" ng-click="action.addRow2()"><span
+                        class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                </button>
+            </div>
+            <div class="row text-center" ng-if="!data.isBriefAdd">
+                <button type="button" class="btn btn-success btn-sm" ng-click="action.saveRow2()">保存
+                </button>
+                <button type="button" class="btn btn-sm" ng-click="action.cancelRow2()">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<!--------------------------------- 客户基本情况 ------------------------------->
+{% extends "layouts/base.html" %}
+
+
+
+{% block container %}
+<div ng-controller="CustomerController" style="padding: 14px;" ng-init="initData={{data}}">
+
+    <ul class="nav nav-tabs">
+
+        <li ng-repeat="cusMenu in data.cusMenus"  ng-click="action.selectCusMenu($index)" ng-class="{'active':data.selectedCusIndex==$index}">
+            <a href="{$cusMenu.curi$}" data-toggle="tab">{$cusMenu.cname$}</a>
+        </li>
+    </ul>
+    <div  class="tab-content">
+        <div ng-class="{'active in':data.selectedCusIndex==0}" class="tab-pane fade in active" >
+            {% include "templates/customerInfo/finance_product/finance_product.html" %}
+        </div>
+        <div ng-class="{'active in':data.selectedCusIndex==1}" class="tab-pane fade" >
+            {% include "templates/customerInfo/company_profile/company_profile.html" %}
+        </div>
+        <div ng-class="{'active in':data.selectedCusIndex==2}" class="tab-pane fade" >
+            {% include "templates/customerInfo/main_manager/main_manager.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/js/controllers/customerInfo/customerInfo.js"></script>
+
+<script src="/js/controllers/customerInfo/financeProduct.js"></script>
+<script src="/js/controllers/customerInfo/companyProfile.js"></script>
+<script src="/js/controllers/customerInfo/mainManager.js"></script>
+{% endblock %}

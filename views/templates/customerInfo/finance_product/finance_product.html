@@ -1,0 +1,14 @@
+<!--------------------------------- 融资产品------------------------------->
+<div ng-controller="FinanceProductController">
+    <div ng-switch="data.cusViewFlag">
+        <div ng-switch-when="0">
+            {% include "templates/customerInfo/finance_product/product_list.html" %}
+        </div>
+        <div ng-switch-when="1">
+            {% include "templates/customerInfo/finance_product/edit_product.html" %}
+        </div>
+        <div ng-switch-default>
+            {% include "templates/customerInfo/finance_product/product_list.html" %}
+        </div>
+    </div>
+</div>

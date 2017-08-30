@@ -1,0 +1,51 @@
+<!--------------------------------- 股权结构 编辑 ------------------------------->
+<div style="padding: 14px">
+    <form name="save_form">
+        <table class="tableForm table_info table">
+            <tr>
+                <th>股东名称</th>
+                <td>
+                    <input type="text" ng-model="data.ownershipStructure.name" name="name" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.name.$dirty && save_form.name.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>认缴出资额（万元）</th>
+                <td>
+                    <input type="text" ng-model="data.ownershipStructure.amt" name="amt" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.amt.$dirty && save_form.amt.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th>出资比例</th>
+                <td>
+                    <input type="text" ng-model="data.ownershipStructure.funded_ratio" name="funded_ratio" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.funded_ratio.$dirty && save_form.funded_ratio.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>出资日期</th>
+                <td>
+                    <input type="text" ng-model="data.ownershipStructure.condate" name="condate" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.condate.$dirty && save_form.condate.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="4"  class="text-center">
+                    <button class="btn btn-success" ng-click="action.saveRow(data.actionFlag,true)" ng-disabled="save_form.$invalid">保存</button>
+                    <button class="btn btn-success" ng-click="action.back(true)">返回</button>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+</div>

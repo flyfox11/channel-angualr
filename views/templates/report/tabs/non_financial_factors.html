@@ -1,0 +1,91 @@
+<!--------------------------------- 非财务因素分析 ------------------------------->
+
+<div style="padding: 30px 0" ng-controller="StructurePaymentController" ng-init="initData={{data}}">
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title"><strong>客户结构收款方式列表</strong></h4>
+        </div>
+        <div class="card-content table-responsive">
+            <div class="product_list" ng-repeat="info in data.Infos">
+                <!--正常状态-->
+                <div class="row" ng-if="data.selectedRowIndex!=$index">
+                    <a  href="javascript:;" ng-click="action.deleteRow($index)"
+                        ><i class="fa fa-trash  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                    <a  href="javascript:;" ng-click="action.editRow($index)"
+                        ><i class="fa fa-pencil  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                </div>
+                <!--编辑状态-->
+                <div class="row" ng-if="data.selectedRowIndex==$index">
+                    <a  href="javascript:;" ng-click="action.cancelRow()"
+                    ><i class="fa fa-undo  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                    <a  href="javascript:;" ng-click="action.updateRow()"
+                    ><i class="fa fa-check  fa-fw" aria-hidden="true" ></i>
+                    </a>
+                </div>
+                <table class="table table-condensed table-bordered table_avg" >
+                    <tr>
+                        <th>产品ID</th>
+                        <td ng-if="data.selectedRowIndex!=$index">
+                            {$info.product_id$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex==$index">{$info.product_id$}</td>
+                        <th>产品名称</th>
+                        <td ng-if="data.selectedRowIndex!=$index">
+                            {$info.product_name$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex==$index"><input type="text" ng-model="data.info.product_name"></td>
+                    </tr>
+
+                    <tr>
+                        <th>产品类型</th>
+                        <td ng-if="data.selectedRowIndex!=$index">
+                            {$info.product_type$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex==$index"> <input type="text" ng-model="data.info.product_type"></td>
+                        <th>产品细分</th>
+                        <td ng-if="data.selectedRowIndex!=$index">
+                            {$info.product_subdivided$}
+                        </td>
+                        <td ng-if="data.selectedRowIndex==$index"><input type="text"  ng-model="data.info.product_subdivided"></td>
+                    </tr>
+
+                </table>
+            </div>
+            <!--客户结构收款方式 新增表-->
+            <table class="table table-condensed table-bordered table_avg" ng-if="!data.isProductAdd">
+                <tr>
+                    <th>产品ID</th>
+                    <td></td>
+
+                    <th>产品名称</th>
+                    <td><input type="text"  ng-model="data.product.product_name"></td>
+                </tr>
+
+                <tr>
+                    <th>产品类型</th>
+                    <td><input type="text"  ng-model="data.product.product_type"></td>
+
+                    <th>产品细分</th>
+                    <td><input type="text"  ng-model="data.product.product_subdivided"></td>
+                </tr>
+
+            </table>
+            <div class="row text-center" ng-if="data.isProductAdd">
+                <button type="button" class="btn btn-success btn-sm" ng-click="action.addRow()"><span
+                        class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                </button>
+            </div>
+            <div class="row text-center" ng-if="!data.isProductAdd">
+                <button type="button" class="btn btn-success btn-sm" ng-click="action.saveRow()">保存
+                </button>
+                <button type="button" class="btn btn-success btn-sm" ng-click="action.cancelRow()">取消
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

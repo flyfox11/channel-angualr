@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<%- include ../public/header %>
+<body>
+<div class="wrapper">
+    <%- include ../public/sidebar %>
+    <div class="main-panel">
+        <div class="investment_f">
+            <% include ./menu %>
+            <div id="myTabContent" class="tab-content" style="padding: 25px">
+                <!--贷款管理-->
+                <div class="fade in active" id="customerInfo">
+                    <div>
+                        <a type="button" class="btn btn-success btn-sm" href="/company/loan">
+                            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>返回
+                        </a>
+                    </div>
+                    <div class="image-container set-full-height">
+                        <div class="container">
+                            <div class="row">
+                                <div class="card wizard-card" data-color="orange" id="wizardProfile">
+
+                                    <div class="wizard-header">
+                                        <!--可以设置标题-->
+                                    </div>
+                                    <div class="wizard-navigation" style="width:0px;height: 0px;">
+                                        <ul style="filter:alpha(opacity=0);-moz-opacity:0;opacity:0;">
+                                            <li><a href="#about" data-toggle="tab">第一步</a></li>
+                                            <li><a href="#account" data-toggle="tab">第二步</a></li>
+                                            <li><a href="#address" data-toggle="tab">第三步</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane" id="about">
+                                            <div class="row text-center"><h3>选择信贷产品</h3></div>
+                                            <table class="table table-striped table-hover table-condensed table-bordered"
+                                                   style="height: 120px;">
+                                                <thead>
+                                                <tr>
+                                                    <th>信贷产品代码</th>
+                                                    <th>信贷产品名称</th>
+                                                    <th>产品类型</th>
+                                                    <th>贷款投向</th>
+                                                    <th>最小贷款金额（元）</th>
+                                                    <th>最大贷款金额（元）</th>
+                                                    <th>最小执行利率(年)</th>
+                                                    <th>最大执行利率(年)</th>
+                                                    <th>借款用途</th>
+                                                    <th>还款方式</th>
+                                                    <th>还款来源</th>
+                                                    <th>还款周期</th>
+                                                    <th>最小贷款期限</th>
+                                                    <th>最大贷款期限</th>
+                                                    <th>最大成数</th>
+                                                    <th>最小成数</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="roleData">
+                                                <% if(!!locals.data){ %>
+                                                <% data.products.forEach(item => { %>
+                                                <tr is_order="<%= item.is_order %>">
+                                                    <td><%= item.credit_products %></td>
+                                                    <td><%= item.credit_products_name %></td>
+                                                    <td><%= item.product_sort %></td>
+                                                    <!--<td style="display: none"><%= item.biz_type %></td>-->
+                                                    <td><%= item.loan_investment %></td>
+                                                    <td class="num_col"><%= item.minimum_loan_amount %></td>
+                                                    <td class="num_col"><%= item.maximum_loan_amount %></td>
+                                                    <td class="num_col"><%= item.minimum_execution_rate_year %></td>
+                                                    <td class="num_col"><%= item.maximum_execution_rate_year %></td>
+                                                    <td><%= item.usage_of_loan %></td>
+                                                    <td><%= item.repayment_method_name %></td>
+
+                                                    <td><%= item.payment %></td>
+                                                    <td><%= item.repayment_period %></td>
+                                                    <td><%= item.minimum_loan_period %></td>
+                                                    <td><%= item.maximum_loan_period %></td>
+                                                    <td id="max_mul" class="num_col"><%= item.max_multiplier %></td>
+                                                    <td class="num_col"><%= item.min_multiplier %></td>
+                                                </tr>
+                                                <% }) %>
+                                                <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane" id="account">
+                                            <div class="row text-center"><h3>选择订单</h3></div>
+                                            <table class="table table-striped table-hover table-condensed table-bordered"
+                                                   style="height: 120px;">
+                                                <thead>
+                                                <tr>
+                                                    <th>订单号</th>
+                                                    <th>账期</th>
+                                                    <th>订单总金额</th>
+                                                    <th>支付日期</th>
+                                                    <th>确认收货日期</th>
+                                                    <th>环节状态</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="roleData1">
+                                                <% if(!!locals.data &&!!locals.data.orderInfo&& locals.data.orderInfo.length > 0){ %>
+                                                <% data.orderInfo.forEach(function(item){ %>
+                                                <tr>
+                                                    <td><%= item.order_no %></td>
+                                                    <td class="num_col"><%= item.acc_period %></td>
+                                                    <td class="num_col"><%= item.total_amt %></td>
+                                                    <td><%= item.pay_date %></td>
+                                                    <td><%= item.confirm_date %></td>
+                                                    <td><%= item.node %></td>
+                                                </tr>
+                                                <% }) %>
+                                                <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane" id="address">
+                                            <div class="row text-center"><h3>信息录入</h3></div>
+                                            <form id="form" method="post" action="/company/initloan"
+                                                  enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <input id="cst_no" name="cst_no"
+                                                               value="<%= data.cstBaseInfo.cst_no %>" type="hidden">
+                                                        <!--产品名称-->
+                                                        <input id="loan_product_name" name="loan_product_name"
+                                                               type="hidden">
+                                                        <!--贷款产品id-->
+                                                        <input id="loan_product_id" name="loan_product_id" type="hidden"
+                                                               hidden="true">
+                                                        <!--是否有订单-->
+                                                        <input id="is_order" name="is_order" type="hidden"
+                                                               hidden="true">
+                                                        <!--贷款期限-->
+                                                        <input id="loan_period" name="loan_period" type="hidden">
+                                                        <!--贷款利率-->
+                                                        <input id="loan_apr" name="loan_apr" value="" type="hidden">
+
+                                                        <!--订单号-->
+                                                        <input id="order_no" name="order_no" readonly="readonly"
+                                                               value="" type="hidden">
+                                                        <!--客户全称-->
+                                                        <input id="cst_full_name" name="cst_full_name"
+                                                               value="<%= data.cstBaseInfo.cst_full_name %>"
+                                                               type="hidden">
+
+                                                        <input id="loan_period_unit" name="loan_period_unit"
+                                                               value="" readonly="readonly" type="hidden">
+
+                                                        <div class="form-group text-right">
+                                                            <label for="loan_start_date">起贷日期</label>
+                                                            <input type="text" class="datetimepicker"
+                                                                   readonly="readonly"
+                                                                   id="loan_start_date" name="loan_start_date">
+                                                        </div>
+                                                        <div class="form-group text-right">
+                                                            <label for="loan_amount">贷款金额（元）</label>
+                                                            <input type="text" id="loan_amount" name="loan_amount">
+                                                        </div>
+                                                        <div class="form-group text-right">
+                                                            <label for="repayment_type">还款方式</label>
+                                                            <input type="text" id="repayment_type"
+                                                                   name="repayment_type" readonly="readonly">
+                                                        </div>
+                                                        <div class="form-group text-right">
+                                                            <label for="receipt_acct_name">转入户名</label>
+                                                            <input type="text" id="receipt_acct_name"
+                                                                   name="receipt_acct_name">
+                                                        </div>
+                                                        <div class="form-group text-right">
+                                                            <label for="file">上传采购合同电子版</label>
+                                                            <a style="display: inline-block">
+                                                                <input id="contract_file" type="file"
+                                                                       name="contractfile"
+                                                                       onchange="fileChange(this)"
+                                                                       style="width: 190px;border: 1px solid #ccc;font-size: 12pt;opacity: 1;position: static;">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group text-right">
+                                                            <label for="loan_end_date">止贷日期</label>
+                                                            <input type="text" id="loan_end_date" class="datetimepicker"
+                                                                   name="loan_end_date" readonly="readonly">
+                                                        </div>
+                                                        <div class="form-group text-right">
+                                                            <label for="receipt_acct_no">转入账号</label>
+                                                            <input type="text" id="receipt_acct_no"
+                                                                   name="receipt_acct_no">
+                                                        </div>
+                                                        <div class="form-group text-right">
+                                                            <label for="receipt_acct_bank">转入银行</label>
+                                                            <input type="text" id="receipt_acct_bank"
+                                                                   name="receipt_acct_bank">
+                                                        </div>
+                                                        <div class="form-group text-right">
+                                                            <label for="pur_ctr_no">采购合同号</label>
+                                                            <input type="text" id="pur_ctr_no" name="pur_ctr_no">
+                                                        </div>
+                                                        <div id="is_order_show" class="form-group text-right">
+                                                            <label for="file">上传订单截图</label>
+                                                            <a style="display: inline-block">
+                                                                <input id="order-file" onchange="fileChange(this)"
+                                                                       type="file" name="orderfile"
+                                                                       style="width: 190px;border: 1px solid #ccc;font-size: 12pt;opacity: 1;position: static;">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 text-center">
+                                                    <input type="submit" value="提交" class="btn btn-success"/>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="wizard-footer height-wizard">
+                                        <div class="pull-right">
+                                            <input type='button'
+                                                   class='btn btn-next btn-fill btn-warning btn-wd btn-sm'
+                                                   name='next' value='下一步'/>
+                                            <!--<input type='button'-->
+                                                   <!--class='btn btn-finish btn-fill btn-warning btn-wd btn-sm'-->
+                                                   <!--name='finish' value='确定'/>-->
+                                        </div>
+                                        <div class="pull-left">
+                                            <input type='button'
+                                                   class='btn btn-previous btn-fill btn-default btn-wd btn-sm'
+                                                   name='previous' value='上一步'/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../public/errorPagePop %>
+<script src="/javascripts/wizard/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+<script src="/javascripts/wizard/gsdk-bootstrap-wizard.js" type="text/javascript"></script>
+<script src="/javascripts/wizard/jquery.validate.min.js" type="text/javascript"></script>
+<script>
+    window.selectTr = null;
+    window.selectTrOrder = null;
+    $("body").on("click", "#roleData tr", function () {
+        if ($(this).hasClass('tabalTrActive')) {
+            $(this).removeClass('tabalTrActive');
+            selectTr = null
+        } else {
+            $(this).addClass('tabalTrActive').siblings().removeClass('tabalTrActive');
+            selectTr = $(this);
+
+            //赋值操作
+            //是否有订单
+            var order = $(this).attr('is_order');
+            $("#is_order").val(order);
+            if (order == '0') {
+                $("#is_order_show").show();
+            } else {
+                $("#is_order_show").hide();
+            }
+
+            // 产品名称
+            var loan_product_name = $(this).find("td:eq(1)").html();
+            $('#loan_product_name').val(loan_product_name);
+            //贷款产品id
+            var loan_product_id = $(this).find("td:eq(0)").html();
+            $('#loan_product_id').val(loan_product_id);
+            //贷款期限
+            var loan_period = $(this).find("td:eq(13)").html();
+            $('#loan_period').val(loan_period);
+            //贷款利率
+            var loan_apr = $(this).find("td:eq(7)").html();
+            $('#loan_apr').val(loan_apr);
+
+            var loan_period_unit = $(this).find("td:eq(11)").html();
+            $('#loan_period_unit').val(loan_period_unit);
+
+            var repayment_type = $(this).find("td:eq(9)").html();
+            $('#repayment_type').val(repayment_type);
+            //计算贷款金额
+            var amt = $('#roleData1 .tabalTrActive').find("td:eq(2)").html();
+
+            if (amt) {  //有订单的情况下
+                var max_mul = $(this).find("td:eq(14)").html();
+                var total = Math.floor(amt * max_mul / 100) * 100;
+                $('#loan_amount').val(total);
+            } else {
+
+            }
+
+            //计算日期
+            if ($('#loan_start_date').val() !== "") {
+                var startTime = $('#loan_start_date').val();
+                var addTime = $('#loan_period').val();
+                $('#loan_end_date').val(GetDateStr(startTime, addTime))
+            }
+        }
+    });
+    //订单点击事件
+    $("body").on("click", "#roleData1 tr", function () {
+        if ($(this).hasClass('tabalTrActive')) {
+            $(this).removeClass('tabalTrActive');
+            selectTrOrder = null
+        } else {
+            $(this).addClass('tabalTrActive').siblings().removeClass('tabalTrActive');
+            selectTrOrder = $(this);
+            var order_number = $(this).find("td:eq(0)").html();
+            $("#order_no").val(order_number);
+        }
+    });
+    function fileChange(target) {
+        var isIE = /msie/i.test(navigator.userAgent) && !window.opera;
+        var fileSize = 0;
+        if (isIE && !target.files) {
+            var filePath = target.value;
+            var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+            var file = fileSystem.GetFile(filePath);
+            fileSize = file.Size;
+        } else {
+            fileSize = target.files[0].size;
+        }
+        /*var size = fileSize / 1024;
+         if(size>2000){
+         alert("附件不能大于2M");
+         target.value="";
+         return
+         }*/
+        var name = target.value;
+        var fileName = name.substring(name.lastIndexOf(".") + 1).toLowerCase();
+        if (fileName != "jpg" && fileName != "jpeg" && fileName != "pdf" && fileName != "png" && fileName != "dwg" && fileName != "gif") {
+            jDialog.alert("请选择pdf或图片格式文件上传！");
+            target.value = "";
+            return
+        }
+    }
+</script>
+<script>
+    $("#form").submit(function () {
+        if(!$("#loan_start_date").val()){
+            jDialog.alert('起贷日期不能为空');
+            return false;
+        }
+        if (!$("#contract_file").val()) {
+            jDialog.alert('请上传采购合同');
+            return false;
+        }
+        if (!$("#order-file").val() && $('#is_order_show').is(':visible')) {
+            jDialog.alert('请上传订单截图');
+            return false;
+        }
+    });
+    //时间输入框联动
+    $('#loan_start_date').change(function () {
+
+        if ($('#loan_period').val() !== "") {
+            var startTime = $('#loan_start_date').val();
+            var addTime = $('#loan_period').val();
+            $('#loan_end_date').val(GetDateStr(startTime, addTime))
+        } else {
+            alert('请选择一个信贷产品，确定贷款期限!');
+        }
+    });
+
+    function GetDateStr(time, AddDayCount) {
+        var dd = new Date(time).getTime() + (AddDayCount - 1) * 24 * 3600 * 1000;
+        dd = new Date(dd);
+        var y = dd.getFullYear();
+        var m = dd.getMonth() + 1;//获取当前月份的日期
+        var d = dd.getDate();
+        return y + "-" + m + "-" + d;
+    }
+</script>
+</body>
+</html>

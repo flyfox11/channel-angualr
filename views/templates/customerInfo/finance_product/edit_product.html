@@ -1,0 +1,87 @@
+<!--------------------------------- 融资产品 编辑 ------------------------------->
+<div style="padding: 14px">
+    <form name="save_form" novalidate>
+        <table class="tableForm table_info table">
+            <tr>
+                <th>申请人</th>
+                <td>
+                    <input type="text" ng-model="data.product.applyer_name" name="applyer_name" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.applyer_name.$dirty && save_form.applyer_name.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>申请融资金额</th>
+                <td>
+                    <input type="text" ng-model="data.product.apply_amt" name="apply_amt" ui-validate="{double_required:'validate.double_required($value)'}" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.apply_amt.$dirty && save_form.apply_amt.$error.required">输入内容不能为空</span>
+                        <span ng-show="save_form.apply_amt.$dirty && save_form.apply_amt.$error.double_required">必须为数字</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>融资期限</th>
+                <td>
+                    <input type="text" ng-model="data.product.loan_period" name="loan_period" ui-validate="{number_required:'validate.number_required($value)'}" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.loan_period.$dirty && save_form.loan_period.$error.required">输入内容不能为空</span>
+                        <span ng-show="save_form.loan_period.$dirty && save_form.loan_period.$error.number_required">必须为正整数</span>
+                    </div>
+                </td>
+
+                <th>授信期限</th>
+                <td>
+                    <input type="text" ng-model="data.product.credit_period" name="credit_period" ui-validate="{number_required:'validate.number_required($value)'}" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.credit_period.$dirty && save_form.credit_period.$error.required">输入内容不能为空</span>
+                        <span ng-show="save_form.credit_period.$dirty && save_form.credit_period.$error.number_required">必须为正整数</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>还款方式</th>
+                <td>
+                    <input type="text" ng-model="data.product.repayment" name="repayment" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.repayment.$dirty && save_form.repayment.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>综合费率</th>
+                <td>
+                    <input type="text" ng-model="data.product.rates" name="rates"  ui-validate="{double_required:'validate.double_required($value)'}" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.rates.$dirty && save_form.rates.$error.required">输入内容不能为空</span>
+                        <span ng-show="save_form.rates.$dirty && save_form.rates.$error.double_required">必须为数字</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>业务调查人</th>
+                <td>
+                    <input type="text" ng-model="data.product.investigator" name="investigator" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.investigator.$dirty && save_form.investigator.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>备注</th>
+                <td>
+                    <input type="text" ng-model="data.product.remark" name="remark" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.remark.$dirty && save_form.remark.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"  class="text-center">
+                    <button class="btn btn-success" ng-click="action.saveRow(data.actionFlag)" ng-disabled="save_form.$invalid">保存</button>
+                    <button class="btn btn-success" ng-click="action.back()">返回</button>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+</div>

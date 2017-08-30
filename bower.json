@@ -1,0 +1,19 @@
+{
+  "name": "sub-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "node_modules"
+  ],
+  "dependencies": {
+    "angular": "1.6.4",
+    "bootstrap": "v4.0.0-alpha.2",
+    "angular-bootstrap": "^2.0.1",
+    "angular-resource": "^1.5.8",
+    "angular-smart-table": "^2.1.8"
+  },
+  "resolutions": {
+    "angular": "1.6.4"
+  }
+}

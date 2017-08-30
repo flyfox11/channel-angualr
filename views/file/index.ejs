@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<%- include ../public/header %>
+<body>
+<div class="wrapper">
+    <%- include ../public/sidebar %>
+    <%- include ./upload %>
+    <div class="main-panel">
+        <%- include ../public/nav %>
+        <div class="investment_f">
+            <div style="padding: 20px">
+                <form method="get">
+                    <a class="btn btn-success" data-toggle="modal" data-target="#block_box_create1">选择文件</a>
+                    <button type="submit" class="btn btn-success">上传</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../public/errorPagePop %>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!--------------------------------- 客户结构收款方式 编辑 ------------------------------->
+<div style="padding: 14px">
+    <form name="save_form">
+        <table class="tableForm table_info table">
+            <input type="hidden" ng-model="data.payment.product_id" name="product_id">
+            <tr>
+                <th>产品名称</th>
+                <td>
+                    <input type="text" ng-model="data.payment.product_name" name="product_name" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.product_name.$dirty && save_form.product_name.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>产品类型</th>
+                <td>
+                    <input type="text" ng-model="data.payment.product_type" name="product_type" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.product_type.$dirty && save_form.product_type.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <th>产品细分</th>
+                <td>
+                    <input type="text" ng-model="data.payment.product_subdivided" name="product_subdivided" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.product_subdivided.$dirty && save_form.product_subdivided.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>被调公司ID</th>
+                <td>
+                    <input type="text" ng-model="data.payment.company_id" name="company_id" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.company_id.$dirty && save_form.company_id.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"  class="text-center">
+                    <button class="btn btn-success" ng-click="action.saveRow(data.actionFlag)" ng-disabled="save_form.$invalid">保存</button>
+                    <button class="btn btn-success" ng-click="action.back()">返回</button>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+</div>

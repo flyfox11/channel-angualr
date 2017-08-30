@@ -1,0 +1,14 @@
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/userData/init">用户导入</a></li>
+    <li><a href="/userData/info">用户信息</a></li>
+    <li><a href="/userData/history">导入历史</a></li>
+</ul>
+<script>
+    <% if(!!locals.showTob && !!locals.showTob.smallTitle){ %>
+    $("#myTab li").each(function () {
+        if ($(this).find('a').text() == '<%= showTob.smallTitle %>') {
+            $(this).addClass('active');
+        }
+    });
+    <% } %>
+</script>

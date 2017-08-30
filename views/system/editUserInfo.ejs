@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<%- include ../public/header %>
+<body>
+<div class="wrapper">
+    <%- include ../public/sidebar %>
+    <%- include ./changePwd %>
+    <div class="main-panel">
+        <div class="investment_f">
+            <% include ./menu %>
+            <div id="myTabContent" class="tab-content" style="padding: 20px">
+                <div class="tab-pane fade in active" id="customerInfo">
+                    <div class="row">
+                        <button data-toggle="modal" data-target="#block_user_create1" type="button"
+                                class="btn btn-success btn-sm" id="add_loan"><span
+                                    class="glyphicon glyphicon-plus"></span>修改密码
+                        </button>
+                        <button type="button" class="btn btn-success btn-sm" id="add_loan_noOrder"><span
+                                    class="glyphicon glyphicon-plus" aria-hidden="true"></span>重置密码
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../public/errorPagePop %>
+<script>
+    $("#add_loan_noOrder").click(function () {
+        // 修改按钮
+        jDialog.confirm('您确定重置密码吗?', {
+            type: 'highlight',
+            text: '确定',
+            handler: function (button, dialog) {
+                location.href = '/system/resetPwd';
+            }
+        }, {
+            type: 'normal',
+            text: '取消',
+            handler: function (button, dialog) {
+                dialog.close();
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

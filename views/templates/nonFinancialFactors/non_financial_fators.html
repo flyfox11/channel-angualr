@@ -1,0 +1,29 @@
+<!--------------------------------- 非财产因素分析 ------------------------------->
+{% extends "layouts/base.html" %}
+
+
+
+{% block container %}
+<div ng-controller="propertyController" style="padding: 14px;" ng-init="initData={{data}}">
+
+    <ul class="nav nav-tabs">
+
+        <li ng-repeat="proMenu in data.proMenus"  ng-click="action.selectProMenu($index)" ng-class="{'active':data.selectedProIndex==$index}">
+            <a href="{proMenu.curi$}" data-toggle="tab">{$proMenu.cname$}</a>
+        </li>
+    </ul>
+    <div  class="tab-content">
+        <div ng-class="{'active in':data.selectedProIndex==0}" class="tab-pane fade in active" >
+            {% include "templates/nonFinancialFactors/structure_payment/structure_payment.html" %}
+        </div>
+        <div ng-class="{'active in':data.selectedProIndex==1}" class="tab-pane fade" >
+            产品产销盈利模式产品产销盈利模式产品产销盈利模式产品产销盈利模式
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/js/controllers/nonfinancialFators/nonFinancialFators.js"></script>
+<script src="/js/controllers/nonfinancialFators/structurePayment.js"></script>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!--------------------------------- 尽调 tab页 ------------------------------->
+{% extends "layouts/base.html" %}
+
+
+
+{% block container %}
+<div ng-controller="ReportController" style="padding: 14px;">
+    <a  onclick="javascript:history.back(-1);" href="javascript:;"
+        class="btn btn-success btn-sm" id="back_index"><span
+            class="glyphicon glyphicon-repeat" aria-hidden="true"></span>返回报告列表
+    </a>
+    <ul class="nav nav-tabs">
+
+        <li ng-repeat="reportMenu in data.reportMenus"  ng-click="action.selectReportMenu($index)" ng-class="{'active':data.selectedReportIndex==$index}">
+            <a href="{$reportMenu.curi$}" data-toggle="tab">{$reportMenu.cname$}</a>
+        </li>
+    </ul>
+    <div  class="tab-content">
+        <div ng-class="{'active in':data.selectedReportIndex==0}" class="tab-pane fade in active" >
+            {% include "templates/report/tabs/customer_info.html" %}
+        </div>
+        <div ng-class="{'active in':data.selectedReportIndex==1}" class="tab-pane fade" >
+            {% include "templates/report/tabs/non_financial_factors.html" %}
+        </div>
+        <div ng-class="{'active in':data.selectedReportIndex==2}" class="tab-pane fade" >
+            {% include "templates/report/tabs/financial_factors.html" %}
+        </div>
+        <div ng-class="{'active in':data.selectedReportIndex==3}" class="tab-pane fade" >
+            {% include "templates/report/tabs/guarantor_analysis.html" %}
+        </div>
+        <div ng-class="{'active in':data.selectedReportIndex==4}" class="tab-pane fade" >
+            {% include "templates/report/tabs/business_model.html" %}
+        </div>
+        <div ng-class="{'active in':data.selectedReportIndex==5}" class="tab-pane fade" >
+            {% include "templates/report/tabs/comprehensive_opinion.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/js/controllers/report/reportController.js"></script>
+
+<script src="/js/controllers/report/tabs/customerInfoController.js"></script>
+
+<script src="/js/controllers/report/tabs/structurePayment.js"></script>
+<script src="/js/controllers/report/tabs/financialFactors.js"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!--------------------------------- 客户结构收款方式 ------------------------------->
+<div ng-controller="StructurePaymentController">
+    <div ng-switch="data.proViewFlag">
+        <div ng-switch-when="0">
+            {% include "templates/nonFinancialFactors/structure_payment/structurepayment_list.html" %}
+        </div>
+        <div ng-switch-when="1">
+            {% include "templates/nonFinancialFactors/structure_payment/edit_structurepayment.html" %}
+        </div>
+        <div ng-switch-default>
+            {% include "templates/nonFinancialFactors/structure_payment/structurepayment_list.html" %}
+        </div>
+    </div>
+</div>

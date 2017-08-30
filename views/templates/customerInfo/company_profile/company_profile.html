@@ -1,0 +1,20 @@
+<!--------------------------------- 企业概况 ------------------------------->
+<div ng-controller="CompanyProfileController">
+    <div ng-switch="data.viewFlag">
+        <div ng-switch-when="0">
+            {% include "templates/customerInfo/company_profile/company_list.html" %}
+        </div>
+        <div ng-switch-when="1">
+            {% include "templates/customerInfo/company_profile/edit_company.html" %}
+        </div>
+        <div ng-switch-when="2">
+            {% include "templates/customerInfo/company_profile/ownership_structure_list.html" %}
+        </div>
+        <div ng-switch-when="3">
+            {% include "templates/customerInfo/company_profile/edit_ownership_structure.html" %}
+        </div>
+        <div ng-switch-default>
+            {% include "templates/customerInfo/company_profile/company_list.html" %}
+        </div>
+    </div>
+</div>

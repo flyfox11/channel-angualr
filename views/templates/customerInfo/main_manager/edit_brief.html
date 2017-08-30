@@ -1,0 +1,51 @@
+<!--------------------------------- 从业经历 编辑 ------------------------------->
+<div style="padding: 14px">
+    <form name="save_form">
+        <table class="tableForm table_info table">
+            <tr>
+                <th>开始日期</th>
+                <td>
+                    <input type="text" ng-model="data.brief.start_date" name="start_date" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.start_date.$dirty && save_form.start_date.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>结束日期</th>
+                <td>
+                    <input type="text" ng-model="data.brief.end_date" name="end_date" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.end_date.$dirty && save_form.end_date.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th>工作单位</th>
+                <td>
+                    <input type="text" ng-model="data.brief.company_name" name="company_name" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.company_name.$dirty && save_form.company_name.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>职务</th>
+                <td>
+                    <input type="text" ng-model="data.brief.position" name="position" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.position.$dirty && save_form.position.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="4"  class="text-center">
+                    <button class="btn btn-success" ng-click="action.saveRow(data.actionFlag,true)" ng-disabled="save_form.$invalid">保存</button>
+                    <button class="btn btn-success" ng-click="action.back(true)">返回</button>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+</div>

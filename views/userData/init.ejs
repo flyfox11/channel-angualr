@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<%- include ../public/header %>
+<body>
+<div class="wrapper">
+    <%- include ../public/sidebar %>
+    <div class="main-panel">
+        <div class="investment_f">
+            <% include ./menu %>
+            <div id="myTabContent" class="" style="padding-top: 20px">
+                <div class="investment_con" id="customerInfo" style="padding:20px;">
+                    <form id="form" method="post" action="/userData/upload" class="form-horizontal"  enctype="multipart/form-data">
+                        <div style="padding: 15px;">
+                            <a href="http://8080/orderImport/downloadTemplate.service" class="btn btn-success">
+                            <span class="glyphicon glyphicon-download btn_icon"
+                                  aria-hidden="true"></span>下载模板
+                            </a>
+                        </div>
+                        <div style="padding: 15px;">
+                            <a href="javascript:;">选择文件
+                                <input type="file" id="impFile" name="impFile" style="width: 260px;border: 1px solid #ccc;font-size: 10pt;
+        padding: 5px 10px;opacity: 1;position: static;" >
+                            </a>
+                        </div>
+                        <input type="submit" value="上传">
+                        <a href="javascript:;" style="margin-left: 20px;" class="btn btn-success" id="submit1">导入</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ../public/errorPagePop %>
+</body>
+</html>

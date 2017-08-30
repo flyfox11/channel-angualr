@@ -1,0 +1,163 @@
+<!--------------------------------- 企业概况 编辑 ------------------------------->
+<div style="padding: 14px">
+    <form name="save_form">
+        <table class="tableForm table_info table">
+            <tr>
+                <th>公司名称</th>
+                <td>
+                    <input type="text" ng-model="data.company.company_name" name="company_name" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.company_name.$dirty && save_form.company_name.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>成立日期</th>
+                <td>
+                    <input type="text" ng-model="data.company.create_date" name="create_date" id="datetimepicker1"
+                           required>
+                    <div class="error_info">
+                        <span ng-show="save_form.create_date.$dirty && save_form.create_date.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>法人</th>
+                <td>
+                    <input type="text" ng-model="data.company.legal_person" name="legal_person" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.legal_person.$dirty && save_form.legal_person.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>企业性质</th>
+                <td>
+                    <input type="text" ng-model="data.company.company_nature" name="company_nature" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.company_nature.$dirty && save_form.company_nature.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>注册资本</th>
+                <td>
+                    <input type="text" ng-model="data.company.registered_capital" name="registered_capital" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.registered_capital.$dirty && save_form.registered_capital.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>实收资本</th>
+                <td>
+                    <input type="text" ng-model="data.company.paid_up_capital" name="paid_up_capital" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.paid_up_capital.$dirty && save_form.paid_up_capital.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>信用等级</th>
+                <td>
+                    <input type="text" ng-model="data.company.credit_level" name="credit_level" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.credit_level.$dirty && save_form.credit_level.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>注册地址</th>
+                <td>
+                    <input type="text" ng-model="data.company.registered_addres" name="registered_addres" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.registered_addres.$dirty && save_form.registered_addres.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <th>实际经营地址</th>
+                <td>
+                    <input type="text" ng-model="data.company.operating_address" name="operating_address" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.operating_address.$dirty && save_form.operating_address.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>经营地房屋属性</th>
+                <td>
+                    <input type="text" ng-model="data.company.operating_housing_properties" name="operating_housing_properties" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.operating_housing_properties.$dirty && save_form.operating_housing_properties.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>联系方式</th>
+                <td>
+                    <input type="text" ng-model="data.company.contact" name="contact" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.contact.$dirty && save_form.contact.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>主营业务</th>
+                <td>
+                    <input type="text" ng-model="data.company.main_biz" name="main_biz" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.main_biz.$dirty && save_form.main_biz.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>产品产销盈利模式</th>
+                <td>
+                    <input type="text" ng-model="data.company.profit_model" name="profit_model" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.profit_model.$dirty && save_form.profit_model.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>贷款卡号</th>
+                <td>
+                    <input type="text" ng-model="data.company.loan_card" name="loan_card" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.loan_card.$dirty && save_form.loan_card.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>渠道名称</th>
+                <td>
+                    <input type="text" ng-model="data.company.channel_name" name="channel_name" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.channel_name.$dirty && save_form.channel_name.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>备注</th>
+                <td>
+                    <input type="text" ng-model="data.company.remark" name="remark" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.remark.$dirty && save_form.remark.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="4"  class="text-center">
+                    <button class="btn btn-success" ng-click="action.saveRow(data.actionFlag)" ng-disabled="save_form.$invalid">保存</button>
+                    <button class="btn btn-success" ng-click="action.back()">返回</button>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+</div>
+<script>
+    $('#datetimepicker1').datetimepicker({
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        bootcssVer:3
+    });
+</script>

@@ -1,0 +1,102 @@
+<!--------------------------------- 主要经营者 编辑 ------------------------------->
+<div style="padding: 14px">
+    <form name="save_form">
+        <table class="tableForm table_info table">
+            <tr>
+                <th>证件号码</th>
+                <td>
+                    <input type="text" ng-model="data.manager.idcard" name="idcard" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.idcard.$dirty && save_form.idcard.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>实际控制人姓名</th>
+                <td>
+                    <input type="text" ng-model="data.manager.name" name="name" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.name.$dirty && save_form.name.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th>性别</th>
+                <td>
+                    <input type="text" ng-model="data.manager.sex" name="sex" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.sex.$dirty && save_form.sex.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>电话</th>
+                <td>
+                    <input type="text" ng-model="data.manager.tel" name="tel" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.tel.$dirty && save_form.tel.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>电子邮箱</th>
+                <td>
+                    <input type="text" ng-model="data.manager.email" name="email" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.email.$dirty && save_form.email.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>从业年限</th>
+                <td>
+                    <input type="text" ng-model="data.manager.years_of_service" name="years_of_service" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.years_of_service.$dirty && save_form.years_of_service.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>年龄</th>
+                <td>
+                    <input type="text" ng-model="data.manager.age" name="age" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.age.$dirty && save_form.age.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>配偶姓名</th>
+                <td>
+                    <input type="text" ng-model="data.manager.spouse_name" name="spouse_name" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.spouse_name.$dirty && save_form.spouse_name.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>配偶工作单位</th>
+                <td>
+                    <input type="text" ng-model="data.manager.spouse_work_unit" name="spouse_work_unit" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.spouse_work_unit.$dirty && save_form.spouse_work_unit.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>备注</th>
+                <td>
+                    <input type="text" ng-model="data.manager.remark" name="remark" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.remark.$dirty && save_form.remark.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="4"  class="text-center">
+                    <button class="btn btn-success" ng-click="action.saveRow(data.actionFlag)" ng-disabled="save_form.$invalid">保存</button>
+                    <button class="btn btn-success" ng-click="action.back()">返回</button>
+                </td>
+
+            </tr>
+        </table>
+    </form>
+
+</div>

@@ -1,0 +1,57 @@
+<div class="modal fade" id="block_box_create1" tabindex="10" role="dialog" aria-labelledby="myModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <form id="form" method="post" action="/company/fileupload" class="form-horizontal" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-body" style="margin: 20px">
+                    <div class="form-group">
+                        <label for="i1">选择文件</label><br>
+                        <a href="javascript:;" class="file">选择文件
+                            <input type="file" id="file" name="file">
+                            <input type="text" name="filename" value="{filename:'1',filepath:'2'}">
+                            <input type="text" name="filename" value="{filename:'1',filepath:'2'}">
+                            <input type="text" name="filename" value="{filename:'1',filepath:'2'}">
+                        </a>
+                        <span style="padding: 4px 20px;" class="fileName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="i6">文件大小不超过5m，类型为:
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="i6">xlsx</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary upload-file">上传</a>
+                    <a href="#" class="btn btn-primary" data-dismiss="modal" style="margin-bottom: 10px;">关闭</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(".upload-file").click(function () {
+        console.log('ok');
+        $("#form").ajaxSubmit({
+            url: '/company/fileupload',
+            dataType: 'json',
+            beforeSubmit: function (arr, $form, options) {
+
+            },
+            success: function (result) {
+                console.log(result);
+                $('#block_box_create1').modal('hide')
+            }
+        });
+    });
+    $('#block_box_create1').on('show.bs.modal', function () {
+        console.log('我开启了,小心哦');
+    })
+    $('#block_box_create1').on('shown.bs.modal', function () {
+        console.log('过渡完成');
+    })
+    $('#block_box_create1').on('hide.bs.modal', function () {
+        console.log('我关闭了,别想我');
+    })
+</script>

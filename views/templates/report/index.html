@@ -1,0 +1,48 @@
+<!--------------------------------- 尽调报告 查询页 ------------------------------->
+
+{% extends "layouts/base.html" %}
+
+
+
+{% block container %}
+<div style="padding: 14px">
+    <form  class="query_form" action="reportQuery" method="get">
+
+
+        <div class="form-group">
+            <label for="company_name">企业名称：</label>
+            <input type="text"  class="form-control" id="company_name"
+                   name="company_name">
+        </div>
+
+
+        <div class="form-group text-center">
+            <button id="add" type="button" class="btn btn-success btn_add btn_blue"><span class="glyphicon glyphicon-plus btn_icon"
+                                                                                     aria-hidden="true" style="top: 1px;"></span>新增
+            </button>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search btn_icon"
+                                                                aria-hidden="true"></span>查询
+            </button>
+
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    window.onload=function () {
+        /*var resetDom=document.querySelector('.btn_reset');
+        var inputDom=document.querySelector('.form-control');
+
+        resetDom.onclick=function () {
+            inputDom.value='';
+        }*/
+        var addBtn=document.querySelector('.btn_add');
+        addBtn.onclick=function () {
+            window.location='/reportAdd';
+        }
+    }
+</script>
+
+{% endblock %}

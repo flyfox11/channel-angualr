@@ -1,0 +1,484 @@
+<!--------------------------------- 资产负债 编辑 ------------------------------->
+<div style="padding: 14px">
+    <form name="save_form" novalidate>
+        <table class="table table-condensed table-bordered table_avg">
+            <tr>
+                <th>年度</th>
+                <td>
+                    <input type="text" ng-model="data.balance.year" name="year" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.year.$dirty && save_form.year.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>货币资金(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.cash" name="cash" ui-validate="{double_required:'validate.double_required($value)'}" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.cash.$dirty && save_form.cash.$error.required">输入内容不能为空</span>
+                        <span ng-show="save_form.cash.$dirty && save_form.cash.$error.double_required">必须为数字</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>短期投资(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.short_term_investments" name="short_term_investments" ui-validate="{number_required:'validate.number_required($value)'}" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.short_term_investments.$dirty && save_form.short_term_investments.$error.required">输入内容不能为空</span>
+                        <span ng-show="save_form.short_term_investments.$dirty && save_form.short_term_investments.$error.number_required">必须为正整数</span>
+                    </div>
+                </td>
+
+                <th>应收票据(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.notes_receivable" name="notes_receivable"  required>
+                    <div class="error_info">
+                        <span ng-show="save_form.notes_receivable.$dirty && save_form.notes_receivable.$error.number_required">必须为正整数</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>应收帐款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.accounts_receivable" name="accounts_receivable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.accounts_receivable.$dirty && save_form.accounts_receivable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>预付帐款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.accounts_prepaid" name="accounts_prepaid"  ui-validate="{double_required:'validate.double_required($value)'}" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.accounts_prepaid.$dirty && save_form.accounts_prepaid.$error.required">输入内容不能为空</span>
+                        <span ng-show="save_form.accounts_prepaid.$dirty && save_form.accounts_prepaid.$error.double_required">必须为数字</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>应收股利(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.dividend_receivable" name="dividend_receivable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.dividend_receivable.$dirty && save_form.dividend_receivable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+
+                <th>应收利息(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.interes_receivable" name="interes_receivable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.interes_receivable.$dirty && save_form.interes_receivable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>其他应收款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.other_receivables" name="other_receivables" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.other_receivables.$dirty && save_form.other_receivables.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>存货(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.inventories" name="inventories" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.inventories.$dirty && save_form.inventories.$error.required">输入内容不能为空</span>
+                    </div>-->
+                    {$+data.balance.raw_materials++data.balance.doing_goods++data.balance.finished_goods++data.balance.zhouzhuan_materials$}
+                </td>
+            </tr>
+
+            <tr>
+            <th>原材料(万元)</th>
+            <td>
+                <input type="text" ng-model="data.balance.raw_materials" name="raw_materials" required>
+                <div class="error_info">
+                    <span ng-show="save_form.raw_materials.$dirty && save_form.raw_materials.$error.required">输入内容不能为空</span>
+                </div>
+            </td>
+            <th>在产品(万元)</th>
+            <td>
+                <input type="text" ng-model="data.balance.doing_goods" name="doing_goods" required>
+                <div class="error_info">
+                    <span ng-show="save_form.doing_goods.$dirty && save_form.doing_goods.$error.required">输入内容不能为空</span>
+                </div>
+            </td>
+        </tr>
+            <tr>
+                <th>库存商品(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.finished_goods" name="finished_goods" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.finished_goods.$dirty && save_form.finished_goods.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>周转材料(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.zhouzhuan_materials" name="zhouzhuan_materials" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.zhouzhuan_materials.$dirty && save_form.zhouzhuan_materials.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>其他流动资产(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.other_current_assets" name="other_current_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.other_current_assets.$dirty && save_form.other_current_assets.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>流动资产合计(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.total_current_assets" name="total_current_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.total_current_assets.$dirty && save_form.total_current_assets.$error.required">输入内容不能为空</span>
+                    </div>-->
+
+                    {$ +data.balance.other_current_assets++data.balance.raw_materials++data.balance.doing_goods++data.balance.finished_goods++data.balance.zhouzhuan_materials++data.balance.other_receivables++data.balance.interes_receivable++data.balance.dividend_receivable++data.balance.accounts_prepaid++data.balance.accounts_receivable++data.balance.notes_receivable++data.balance.short_term_investments++data.balance.cash $}
+                </td>
+            </tr>
+            <tr>
+                <th>长期债券投资(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.long_term_securities_investment" name="long_term_securities_investment" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.long_term_securities_investment.$dirty && save_form.long_term_securities_investment.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>长期股权投资(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.long_term_equity_investment" name="long_term_equity_investment" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.long_term_equity_investment.$dirty && save_form.long_term_equity_investment.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>固定资产原价(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.fixed_assets_cost" name="fixed_assets_cost" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.fixed_assets_cost.$dirty && save_form.fixed_assets_cost.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>累计折旧(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.accumulated_dpreciation" name="accumulated_dpreciation" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.accumulated_dpreciation.$dirty && save_form.accumulated_dpreciation.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>固定资产账面价值(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.fixed_assets_book_value" name="fixed_assets_book_value" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.fixed_assets_book_value.$dirty && save_form.fixed_assets_book_value.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>在建工程(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.construction_in_progress" name="construction_in_progress" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.construction_in_progress.$dirty && save_form.construction_in_progress.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>工程物资(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.project_material" name="project_material" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.project_material.$dirty && save_form.project_material.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>固定资产清理(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.disposal_fixed_assets" name="disposal_fixed_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.disposal_fixed_assets.$dirty && save_form.disposal_fixed_assets.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>生产性生物资产(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.capitalized_biological_assets" name="capitalized_biological_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.capitalized_biological_assets.$dirty && save_form.capitalized_biological_assets.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>无形资产(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.intangible_assets" name="intangible_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.intangible_assets.$dirty && save_form.intangible_assets.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>开发支出(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.development_expend" name="development_expend" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.development_expend.$dirty && save_form.development_expend.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>长期待摊费用(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.deferred_assets" name="deferred_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.deferred_assets.$dirty && save_form.deferred_assets.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>其他非流动资产(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.other_non_current_assets" name="other_non_current_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.other_non_current_assets.$dirty && save_form.other_non_current_assets.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>非流动资产合计(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.total_non_current_assets" name="total_non_current_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.total_non_current_assets.$dirty && save_form.total_non_current_assets.$error.required">输入内容不能为空</span>
+                    </div>-->
+                    {$ +data.balance.other_non_current_assets++data.balance.deferred_assets++data.balance.development_expend++data.balance.intangible_assets++data.balance.capitalized_biological_assets++data.balance.disposal_fixed_assets++data.balance.project_material
+                    ++data.balance.construction_in_progress++data.balance.fixed_assets_book_value-+data.balance.accumulated_dpreciation++data.balance.fixed_assets_cost++data.balance.long_term_equity_investment++data.balance.long_term_securities_investment  $}
+
+                </td>
+            </tr>
+            <tr>
+                <th>资产总计(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.total_assets" name="total_assets" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.total_assets.$dirty && save_form.total_assets.$error.required">输入内容不能为空</span>
+                    </div>-->
+
+                    {$ +data.balance.other_non_current_assets++data.balance.deferred_assets++data.balance.development_expend++data.balance.intangible_assets++data.balance.capitalized_biological_assets++data.balance.disposal_fixed_assets++data.balance.project_material
+                    ++data.balance.construction_in_progress++data.balance.fixed_assets_book_value-+data.balance.accumulated_dpreciation++data.balance.fixed_assets_cost++data.balance.long_term_equity_investment++data.balance.long_term_securities_investment
+                    ++data.balance.other_current_assets++data.balance.raw_materials++data.balance.doing_goods++data.balance.finished_goods++data.balance.zhouzhuan_materials++data.balance.other_receivables++data.balance.interes_receivable++data.balance.dividend_receivable++data.balance.accounts_prepaid++data.balance.accounts_receivable++data.balance.notes_receivable++data.balance.short_term_investments++data.balance.cash$}
+                </td>
+                <th>短期借款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.short_term_loans" name="short_term_loans" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.short_term_loans.$dirty && save_form.short_term_loans.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>应付票款(款)(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.notes_payable" name="notes_payable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.notes_payable.$dirty && save_form.notes_payable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>应付帐款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.accounts_payable" name="accounts_payable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.accounts_payable.$dirty && save_form.accounts_payable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>预收帐款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.advances_from_customers" name="advances_from_customers" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.advances_from_customers.$dirty && save_form.advances_from_customers.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>应付工资(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.accrued_payroll" name="accrued_payroll" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.accrued_payroll.$dirty && save_form.accrued_payroll.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>应交税金(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.taxes_payable" name="taxes_payable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.taxes_payable.$dirty && save_form.taxes_payable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>应付利息(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.interes_payable" name="interes_payable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.interes_payable.$dirty && save_form.interes_payable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>应付利润(股利)(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.profits_payable" name="profits_payable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.profits_payable.$dirty && save_form.profits_payable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>其他应付款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.other_creditors" name="other_creditors" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.other_creditors.$dirty && save_form.other_creditors.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>其他流动负债(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.other_current_liabilities" name="other_current_liabilities" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.other_current_liabilities.$dirty && save_form.other_current_liabilities.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>流动负债合计(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.total_current_liabilities" name="total_current_liabilities" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.total_current_liabilities.$dirty && save_form.total_current_liabilities.$error.required">输入内容不能为空</span>
+                    </div>-->
+                    {$ +data.balance.other_current_liabilities++data.balance.other_creditors++data.balance.profits_payable++data.balance.interes_payable++data.balance.taxes_payable
+                    ++data.balance.accrued_payroll++data.balance.advances_from_customers++data.balance.accounts_payable++data.balance.notes_payable++data.balance.short_term_loans$}
+                </td>
+            </tr>
+            <tr>
+                <th>长期借款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.long_term_loans_payable" name="long_term_loans_payable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.long_term_loans_payable.$dirty && save_form.long_term_loans_payable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>长期应付款(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.long_term_accounts_payable" name="long_term_accounts_payable" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.long_term_accounts_payable.$dirty && save_form.long_term_accounts_payable.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>递延收益(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.deferred_income" name="deferred_income" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.deferred_income.$dirty && save_form.deferred_income.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>其他非流动负债(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.other_non_current_liabilities" name="other_non_current_liabilities" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.other_non_current_liabilities.$dirty && save_form.other_non_current_liabilities.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>非流动负债合计(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.total_non_current_liabilities" name="total_non_current_liabilities" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.total_non_current_liabilities.$dirty && save_form.total_non_current_liabilities.$error.required">输入内容不能为空</span>
+                    </div>-->
+                    {$ +data.balance.long_term_loans_payable++data.balance.long_term_accounts_payable++data.balance.deferred_income++data.balance.other_non_current_liabilities$}
+                </td>
+                <th>负 债 合 计(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.total_liabilities" name="total_liabilities" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.total_liabilities.$dirty && save_form.total_liabilities.$error.required">输入内容不能为空</span>
+                    </div>-->
+                    {$ +data.balance.long_term_loans_payable++data.balance.long_term_accounts_payable++data.balance.deferred_income++data.balance.other_non_current_liabilities
+                    ++data.balance.other_current_liabilities++data.balance.other_creditors++data.balance.profits_payable++data.balance.interes_payable++data.balance.taxes_payable
+                    ++data.balance.accrued_payroll++data.balance.advances_from_customers++data.balance.accounts_payable++data.balance.notes_payable++data.balance.short_term_loans$}
+                </td>
+            </tr>
+            <tr>
+                <th>实收资本(股本)(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.subscribed_capital" name="subscribed_capital" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.subscribed_capital.$dirty && save_form.subscribed_capital.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>资本公积(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.capital_surplus" name="capital_surplus" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.capital_surplus.$dirty && save_form.capital_surplus.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>盈余公积(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.surplus_reserve" name="surplus_reserve" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.surplus_reserve.$dirty && save_form.surplus_reserve.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+                <th>未分配利润(万元)</th>
+                <td>
+                    <input type="text" ng-model="data.balance.retained_earnings" name="retained_earnings" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.retained_earnings.$dirty && save_form.retained_earnings.$error.required">输入内容不能为空</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>所有者权益合计(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.total_shareholders_equity" name="total_shareholders_equity" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.total_shareholders_equity.$dirty && save_form.total_shareholders_equity.$error.required">输入内容不能为空</span>
+                    </div>-->
+                    {$ +data.balance.subscribed_capital++data.balance.capital_surplus++data.balance.surplus_reserve++data.balance.retained_earnings $}
+                </td>
+                <th>负债及所有者权益合计(万元)</th>
+                <td>
+                    <!--<input type="text" ng-model="data.balance.total_liabilities_equity" name="total_liabilities_equity" required>
+                    <div class="error_info">
+                        <span ng-show="save_form.total_liabilities_equity.$dirty && save_form.total_liabilities_equity.$error.required">输入内容不能为空</span>
+                    </div>-->
+                    {$ +data.balance.subscribed_capital++data.balance.capital_surplus++data.balance.surplus_reserve++data.balance.retained_earnings
+                    ++data.balance.long_term_loans_payable++data.balance.long_term_accounts_payable++data.balance.deferred_income++data.balance.other_non_current_liabilities
+                    ++data.balance.other_current_liabilities++data.balance.other_creditors++data.balance.profits_payable++data.balance.interes_payable++data.balance.taxes_payable
+                    ++data.balance.accrued_payroll++data.balance.advances_from_customers++data.balance.accounts_payable++data.balance.notes_payable++data.balance.short_term_loans$}
+                </td>
+            </tr>
+            <!--<tr ng-if="data.actionFlag=='add'">
+                <th>年度分期(万元)</th>
+                <td>
+                    <select class="select_normal" ng-init="data.selectedName = data.yearNames[0]" ng-model="data.selectedName" ng-options="x for x in data.yearNames">
+                    </select>
+                </td>
+
+            </tr>-->
+            <tr >
+                <td colspan="4"  class="text-center">
+                    <button class="btn btn-success" ng-click="action.saveRow(data.actionFlag)" ng-disabled="save_form.$invalid" ng-if="data.actionFlag=='add'">保存</button>
+                    <button class="btn btn-success" ng-click="action.saveRow(data.actionFlag)"  ng-if="data.actionFlag=='update'">保存</button>
+                    <button class="btn btn-success" ng-click="action.back()">返回</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>

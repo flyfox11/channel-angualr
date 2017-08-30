@@ -1,0 +1,509 @@
+<!--------------------------------- 资产负债 详情页 ------------------------------->
+<div>
+    <a  ng-click="action.back()"
+        class="btn btn-success btn-sm" ><span
+            class="glyphicon glyphicon-repeat" aria-hidden="true" ></span>返回资产年度列表
+    </a>
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title"><strong>资产负债表</strong></h4>
+        </div>
+        <div class="card-content table-responsive">
+            <div class="flex_container">
+                <span class="flex_item">编制单位：{$initData.company_name$}</span>
+                <span class="flex_item text-center">{$ data.balance.end_date $}</span>
+                <span class="flex_item text-right">单位：万元</span>
+            </div>
+            <table class="table table-condensed table-bordered table_avg">
+                <tr>
+                    <th>资产</th>
+                    <th>期末余额</th>
+                    <th>负债和所有者权益</th>
+                    <th>期末余额</th>
+                </tr>
+                <tr>
+                    <th>流动资产：</th>
+                    <td></td>
+                    <th>流动负债：</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>货币资金(万元)</th>
+                    <td>
+                        {$ data.balance.cash $}
+                    </td>
+                    <th>短期借款(万元)</th>
+                    <td>
+                        {$ data.balance.short_term_loans $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>短期投资(万元)</th>
+                    <td>{$ data.balance.short_term_investments $}
+                    </td>
+                    <th>应付票据(万元)</th>
+                    <td>{$ data.balance.notes_payable $}
+                </tr>
+                <tr>
+                    <th>应收票据(万元)</th>
+                    <td>{$ data.balance.notes_receivable $}
+                    </td>
+                    <th>应付帐款(万元)</th>
+                    <td>{$ data.balance.accounts_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>应收帐款(万元)</th>
+                    <td>{$ data.balance.accounts_receivable $}
+                    </td>
+                    <th>预收帐款(万元)</th>
+                    <td>{$ data.balance.advances_from_customers $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>预付帐款(万元)</th>
+                    <td>{$ data.balance.accounts_prepaid $}
+                    </td>
+                    <th>应付工资(万元)</th>
+                    <td>{$ data.balance.accrued_payroll $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>应收股利(万元)</th>
+                    <td>{$ data.balance.dividend_receivable $}
+                    </td>
+                    <th>应交税金(万元)</th>
+                    <td>{$ data.balance.taxes_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>应收利息(万元)</th>
+                    <td>{$ data.balance.interes_receivable $}
+                    </td>
+                    <th>应付利息(万元)</th>
+                    <td>{$ data.balance.interes_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>其他应收款(万元)</th>
+                    <td>{$ data.balance.other_receivables $}
+                    </td>
+                    <th>应付利润(股利)(万元)</th>
+                    <td>{$ data.balance.profits_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>存货(万元)</th>
+                    <td>{$ data.balance.inventories $}
+                    </td>
+                    <th>其他应付款(万元)</th>
+                    <td>{$ data.balance.other_creditors $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>原材料(万元)</th>
+                    <td>{$ data.balance.raw_materials $}
+                    </td>
+                    <th>其他流动负债(万元)</th>
+                    <td>{$ data.balance.other_current_liabilities $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>在产品(万元)</th>
+                    <td>{$ data.balance.doing_goods $}
+                    </td>
+                    <th>流动负债合计(万元)</th>
+                    <td>{$ data.balance.total_current_liabilities $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>库存商品(万元)</th>
+                    <td>{$ data.balance.finished_goods $}
+                    </td>
+                    <th>非流动负债：</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>周转材料(万元)</th>
+                    <td>{$ data.balance.zhouzhuan_materials $}
+                    </td>
+                    <th>长期借款(万元)</th>
+                    <td>{$ data.balance.long_term_loans_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>其他流动资产(万元)</th>
+                    <td>{$ data.balance.other_current_assets $}
+                    </td>
+                    <th>长期应付款(万元)</th>
+                    <td>{$ data.balance.long_term_accounts_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>流动资产合计(万元)</th>
+                    <td>{$ data.balance.total_current_assets $}
+
+                    </td>
+                    <th>递延收益(万元)</th>
+                    <td>{$ data.balance.deferred_income $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>非流动资产：</th>
+                    <td></td>
+                    <th>其他非流动负债(万元)</th>
+                    <td>{$ data.balance.other_non_current_liabilities $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>长期债券投资(万元)</th>
+                    <td>{$ data.balance.long_term_securities_investment $}
+                    </td>
+                    <th>非流动负债合计(万元)</th>
+                    <td>{$ data.balance.total_non_current_liabilities $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>长期股权投资(万元)</th>
+                    <td>{$ data.balance.long_term_equity_investment $}
+                    </td>
+                    <th>负 债 合 计(万元)</th>
+                    <td>{$ data.balance.total_liabilities $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>固定资产原价(万元)</th>
+                    <td>{$ data.balance.fixed_assets_cost $}
+                    </td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>累计折旧(万元)</th>
+                    <td>{$ data.balance.accumulated_dpreciation $}
+                    </td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>固定资产账面价值(万元)</th>
+                    <td>{$ data.balance.fixed_assets_book_value $}
+                    </td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>在建工程(万元)</th>
+                    <td>{$ data.balance.construction_in_progress $}
+                    </td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>工程物资(万元)</th>
+                    <td>{$ data.balance.project_material $}
+                    </td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>固定资产清理(万元)</th>
+                    <td>{$ data.balance.disposal_fixed_assets $}
+                    </td>
+                    <th></th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>生产性生物资产(万元)</th>
+                    <td>{$ data.balance.capitalized_biological_assets $}
+                    </td>
+                    <th>所有者权益：</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>无形资产(万元)</th>
+                    <td>{$ data.balance.intangible_assets $}
+                    </td>
+                    <th>实收资本(股本)(万元)</th>
+                    <td>{$ data.balance.subscribed_capital $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>开发支出(万元)</th>
+                    <td>{$ data.balance.development_expend $}
+                    </td>
+                    <th>资本公积(万元)</th>
+                    <td>{$ data.balance.capital_surplus $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>长期待摊费用(万元)</th>
+                    <td>{$ data.balance.deferred_assets $}
+                    </td>
+                    <th>盈余公积(万元)</th>
+                    <td>{$ data.balance.surplus_reserve $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>其他非流动资产(万元)</th>
+                    <td>{$ data.balance.other_non_current_assets $}
+                    </td>
+                    <th>未分配利润(万元)</th>
+                    <td>{$ data.balance.retained_earnings $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>非流动资产合计(万元)</th>
+                    <td>{$ data.balance.total_non_current_assets $}
+
+                    </td>
+                    <th>所有者权益合计(万元)</th>
+                    <td>{$ data.balance.total_shareholders_equity $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>资产总计(万元)</th>
+                    <td>{$ data.balance.total_assets $}
+
+                    </td>
+                    <th>负债及所有者权益合计(万元)</th>
+                    <td>{$ data.balance.total_liabilities_equity $}
+
+                    </td>
+                </tr>
+            </table>
+            <!--<table class="table table-condensed table-bordered table_avg">
+                <tr>
+                    <th>年度</th>
+                    <td>
+                        {$ data.balance.year $}
+                    </td>
+
+                    <th>货币资金(万元)</th>
+                    <td>
+                        {$ data.balance.cash $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>短期投资(万元)</th>
+                    <td>{$ data.balance.short_term_investments $}
+                    </td>
+
+                    <th>应收票据(万元)</th>
+                    <td>{$ data.balance.notes_receivable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>应收帐款(万元)</th>
+                    <td>{$ data.balance.accounts_receivable $}
+                    </td>
+
+                    <th>预付帐款(万元)</th>
+                    <td>{$ data.balance.accounts_prepaid $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>应收股利(万元)</th>
+                    <td>{$ data.balance.dividend_receivable $}
+                    </td>
+
+                    <th>应收利息(万元)</th>
+                    <td>{$ data.balance.interes_receivable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>其他应收款(万元)</th>
+                    <td>{$ data.balance.other_receivables $}
+                    </td>
+                    <th>存货(万元)</th>
+                    <td>{$ data.balance.inventories $}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>原材料(万元)</th>
+                    <td>{$ data.balance.raw_materials $}
+                    </td>
+                    <th>在产品(万元)</th>
+                    <td>{$ data.balance.doing_goods $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>库存商品(万元)</th>
+                    <td>{$ data.balance.finished_goods $}
+                    </td>
+                    <th>周转材料(万元)</th>
+                    <td>{$ data.balance.zhouzhuan_materials $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>其他流动资产(万元)</th>
+                    <td>{$ data.balance.other_current_assets $}
+                    </td>
+                    <th>流动资产合计(万元)</th>
+                    <td>{$ data.balance.total_current_assets $}
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>长期债券投资(万元)</th>
+                    <td>{$ data.balance.long_term_securities_investment $}
+                    </td>
+                    <th>长期股权投资(万元)</th>
+                    <td>{$ data.balance.long_term_equity_investment $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>固定资产原价(万元)</th>
+                    <td>{$ data.balance.fixed_assets_cost $}
+                    </td>
+                    <th>累计折旧(万元)</th>
+                    <td>{$ data.balance.accumulated_dpreciation $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>固定资产账面价值(万元)</th>
+                    <td>{$ data.balance.fixed_assets_book_value $}
+                    </td>
+                    <th>在建工程(万元)</th>
+                    <td>{$ data.balance.construction_in_progress $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>工程物资(万元)</th>
+                    <td>{$ data.balance.project_material $}
+                    </td>
+                    <th>固定资产清理(万元)</th>
+                    <td>{$ data.balance.disposal_fixed_assets $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>生产性生物资产(万元)</th>
+                    <td>{$ data.balance.capitalized_biological_assets $}
+                    </td>
+                    <th>无形资产(万元)</th>
+                    <td>{$ data.balance.intangible_assets $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>开发支出(万元)</th>
+                    <td>{$ data.balance.development_expend $}
+                    </td>
+                    <th>长期待摊费用(万元)</th>
+                    <td>{$ data.balance.deferred_assets $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>其他非流动资产(万元)</th>
+                    <td>{$ data.balance.other_non_current_assets $}
+                    </td>
+                    <th>非流动资产合计(万元)</th>
+                    <td>{$ data.balance.total_non_current_assets $}
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>资产总计(万元)</th>
+                    <td>{$ data.balance.total_assets $}
+
+                    </td>
+                    <th>短期借款(万元)</th>
+                    <td>{$ data.balance.short_term_loans $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>应付票款(款)(万元)</th>
+                    <td>{$ data.balance.notes_payable $}
+                    </td>
+                    <th>应付帐款(万元)</th>
+                    <td>{$ data.balance.accounts_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>预收帐款(万元)</th>
+                    <td>{$ data.balance.advances_from_customers $}
+                    </td>
+                    <th>应付工资(万元)</th>
+                    <td>{$ data.balance.accrued_payroll $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>应交税金(万元)</th>
+                    <td>{$ data.balance.taxes_payable $}
+                    </td>
+                    <th>应付利息(万元)</th>
+                    <td>{$ data.balance.interes_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>应付利润(股利)(万元)</th>
+                    <td>{$ data.balance.profits_payable $}
+                    </td>
+                    <th>其他应付款(万元)</th>
+                    <td>{$ data.balance.other_creditors $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>其他流动负债(万元)</th>
+                    <td>{$ data.balance.other_current_liabilities $}
+                    </td>
+                    <th>流动负债合计(万元)</th>
+                    <td>{$ data.balance.total_current_liabilities $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>长期借款(万元)</th>
+                    <td>{$ data.balance.long_term_loans_payable $}
+                    </td>
+                    <th>长期应付款(万元)</th>
+                    <td>{$ data.balance.long_term_accounts_payable $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>递延收益(万元)</th>
+                    <td>{$ data.balance.deferred_income $}
+                    </td>
+                    <th>其他非流动负债(万元)</th>
+                    <td>{$ data.balance.other_non_current_liabilities $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>非流动负债合计(万元)</th>
+                    <td>{$ data.balance.total_non_current_liabilities $}
+                    </td>
+                    <th>负 债 合 计(万元)</th>
+                    <td>{$ data.balance.total_liabilities $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>实收资本(股本)(万元)</th>
+                    <td>{$ data.balance.subscribed_capital $}
+                    </td>
+                    <th>资本公积(万元)</th>
+                    <td>{$ data.balance.capital_surplus $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>盈余公积(万元)</th>
+                    <td>{$ data.balance.surplus_reserve $}
+                    </td>
+                    <th>未分配利润(万元)</th>
+                    <td>{$ data.balance.retained_earnings $}
+                    </td>
+                </tr>
+                <tr>
+                    <th>所有者权益合计(万元)</th>
+                    <td>{$ data.balance.total_shareholders_equity $}
+                    </td>
+                    <th>负债及所有者权益合计(万元)</th>
+                    <td>{$ data.balance.total_liabilities_equity $}
+
+                    </td>
+                </tr>
+
+
+            </table>-->
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,63 @@
+
+<div class="sidebar" data-color="red" ng-init="initIndex={{data}}" data-image="../md/img/sidebar-1.jpg">
+    <div class="logo">
+        <a href="#" class="simple-text">
+            <!--<i class="material-icons sys-icon" style="color: #216bc9;">remove_red_eye</i>-->
+            <img src="../md/img/conduit.ico" style="width:30px;height:30px">
+            &nbsp;&nbsp;
+            <span id="hoverLogout">渠道管理系统</span>
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav" id="menu_nav">
+            <li ng-repeat="menu in data.menus" ng-click="action.select($index)" ng-class="{'active':data.selectedIndex==$index}">
+                <a href="{$menu.curi$}">
+                    <i class="fa" ng-class="menu.icon" ng-style="{color:(data.selectedIndex==$index)?'#fff':'#fb241f'}"></i>
+                    <p>{$menu.cname$}</p>
+                </a>
+            </li>
+            <!--<li>
+                <a href="/company/companyQueryView">
+                    <i class="glyphicon glyphicon-list-alt" style="color: #fb241f;"></i>
+
+                    <p>客户基本情况</p>
+                </a>
+            </li>
+            <li>
+                <a href="/company/loanQueryView">
+                    <i class="glyphicon glyphicon-usd" style="color: #fb241f;"></i>
+
+                    <p>非财务因素分析</p>
+                </a>
+            </li>
+            <li>
+                <a href="/company/companyDataQueryView">
+                    <i class="glyphicon glyphicon-credit-card" style="color: #fb241f;"></i>
+
+                    <p>财务因素分析</p>
+                </a>
+            </li>
+            <li>
+                <a href="/company/companyDataQueryView">
+                    <i class="glyphicon glyphicon-list-alt" style="color: #fb241f;"></i>
+
+                    <p>保证人分析</p>
+                </a>
+            </li>
+            <li>
+                <a href="/company/companyDataQueryView">
+                    <i class="glyphicon glyphicon-usd" style="color: #fb241f;"></i>
+
+                    <p>经营模式与经营策略</p>
+                </a>
+            </li>
+            <li>
+                <a href="/company/companyDataQueryView">
+                    <i class="glyphicon glyphicon-credit-card" style="color: #fb241f;"></i>
+
+                    <p>综合意见</p>
+                </a>
+            </li>-->
+        </ul>
+    </div>
+</div>

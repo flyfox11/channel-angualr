@@ -1,0 +1,496 @@
+<!--------------------------------- 客户基本情况  添加------------------------------->
+
+<div style="padding: 30px 0" ng-controller="CustomerInfoAddController">
+    <!--融资产品信息-->
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title"><strong>添加融资产品信息</strong></h4>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table  table-condensed table-bordered table_avg">
+                <tr>
+                    <th>申请人</th>
+                    <td  ng-if="data.isApplyFinish">
+                        {$data.apply.applyer_name$}
+                    </td>
+                    <td ng-if="!data.isApplyFinish"><input type="text" ng-model="data.addApply.applyer_name"></td>
+
+                    <th>申请融资金额(万元)</th>
+                    <td  ng-if="data.isApplyFinish">
+                        {$data.apply.apply_amt$}
+                    </td>
+                    <td ng-if="!data.isApplyFinish"><input type="text" ng-model="data.addApply.apply_amt"></td>
+                </tr>
+                <tr>
+                    <th>融资期限</th>
+                    <td  ng-if="data.isApplyFinish">
+                        {$data.apply.loan_period$}
+                    </td>
+                    <td ng-if="!data.isApplyFinish"><input type="text" ng-model="data.addApply.loan_period"></td>
+                    <th>授信期限</th>
+                    <td  ng-if="data.isApplyFinish">
+                        {$data.apply.credit_period$}
+                    </td>
+                    <td ng-if="!data.isApplyFinish"><input type="text" ng-model="data.addApply.credit_period"></td>
+                </tr>
+                <tr>
+                    <th>还款方式</th>
+                    <td  ng-if="data.isApplyFinish">
+                        {$data.apply.repayment$}
+                    </td>
+                    <td ng-if="!data.isApplyFinish"><input type="text" ng-model="data.addApply.repayment"></td>
+                    <th>综合费率</th>
+                    <td  ng-if="data.isApplyFinish">
+                        {$data.apply.rates$}
+                    </td>
+                    <td ng-if="!data.isApplyFinish"><input type="text" ng-model="data.addApply.rates"></td>
+                </tr>
+                <tr>
+                    <th>业务调查人</th>
+                    <td  ng-if="data.isApplyFinish">
+                        {$data.apply.investigator$}
+                    </td>
+                    <td ng-if="!data.isApplyFinish"><input type="text" ng-model="data.addApply.investigator"></td>
+                    <!--<th>备注</th>
+                    <td  ng-if="data.isApplyFinish">
+                        {$data.apply.remark$}
+                    </td>
+                    <td ng-if="!data.isApplyFinish"><input type="text" ng-model="data.addApply.remark"></td>-->
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td   colspan="3" ng-if="data.isApplyFinish">
+                        {$data.apply.remark$}
+                    </td>
+                    <td colspan="3" ng-if="!data.isApplyFinish">
+                        <textarea name=""  cols="95" rows="3" ng-model="data.addApply.remark"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <div class="row text-center"  ng-if="!data.isApplyFinish">
+                <button class="btn btn-success" ng-click="action.saveApply()">完成</button>
+                <button class="btn"  ng-click="action.cancelApply()">取消</button>
+            </div>
+        </div>
+    </div>
+    <!--企业概况-->
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title"><strong>添加企业概况</strong></h4>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table  table-condensed table-bordered table_avg">
+                <tr>
+                    <th>公司名称</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.company_name$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.company_name"></td>
+                    <th>成立日期</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.create_date$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish">
+                        <!--<input type="text" ng-model="data.addCompany.create_date">-->
+                        <date-time-picker  ng-model="data.addCompany.create_date" position="bottom-right" start=""></date-time-picker>
+                    </td>
+                </tr>
+                <tr>
+                    <th>法人</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.legal_person$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.legal_person"></td>
+                    <th>企业性质</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.company_nature$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish">
+                        <!--<input type="text" ng-model="data.addCompany.company_nature">-->
+                        <select class="select_normal" ng-init="data.addCompany.company_nature = data.natureNames[0]" ng-model="data.addCompany.company_nature" ng-options="x for x in data.natureNames">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>注册资本(万元)</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.registered_capital$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.registered_capital"></td>
+                    <th>实收资本(万元)</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.paid_up_capital$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.paid_up_capital"></td>
+                </tr>
+                <tr>
+                    <th>信用等级</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.credit_level$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.credit_level"></td>
+                    <th>注册地址</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.registered_addres$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.registered_addres"></td>
+                </tr>
+                <tr>
+                    <th>实际经营地址</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.operating_address$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.operating_address"></td>
+                    <th>经营地房屋属性</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.operating_housing_properties$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish">
+                        <!--<input type="text" ng-model="data.addCompany.operating_housing_properties">-->
+                        <select class="select_normal" ng-init="data.addCompany.operating_housing_properties = data.housingPropertiesNames[0]" ng-model="data.addCompany.operating_housing_properties" ng-options="x for x in data.housingPropertiesNames">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>联系方式</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.contact$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.contact"></td>
+                    <th>主营业务</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.main_biz$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.main_biz"></td>
+                </tr>
+                <tr>
+                    <th>产品产销盈利模式</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.profit_model$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.profit_model"></td>
+                    <th>贷款卡号</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.loan_card$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.loan_card"></td>
+                </tr>
+                <tr>
+                    <th>渠道名称</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.channel_name$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.channel_name"></td>
+                    <!--<th>备注</th>
+                    <td   ng-if="data.isCompanyFinish">
+                        {$data.company.remark$}
+                    </td>
+                    <td ng-if="!data.isCompanyFinish"><input type="text" ng-model="data.addCompany.remark"></td>-->
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td   colspan="3" ng-if="data.isCompanyFinish">
+                        {$data.company.remark$}
+                    </td>
+                    <td colspan="3" ng-if="!data.isCompanyFinish">
+                        <textarea name="" id="" cols="95" rows="3" ng-model="data.addCompany.remark"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <div class="row text-center" ng-if="!data.isCompanyFinish">
+                <button class="btn btn-success" ng-click="action.saveCompany()">完成</button>
+                <button class="btn" ng-click="action.cancelCompany()">取消</button>
+
+            </div>
+            <!--股权结构-->
+            <div class="row tip_title">
+                <a
+                ><i class="fa fa-stumbleupon" aria-hidden="true" >股权结构</i>
+                </a>
+            </div>
+            <!--<table class="table table-condensed table-bordered table_avg" >
+                <tr>
+                    <th>股东名称</th>
+                    <td   ng-if="data.isOwnerShipFinish">
+                        {$data.ownership.name$}
+                    </td>
+                    <td   ng-if="!data.isOwnerShipFinish"><input type="text" ng-model="data.addOwnerShip.name"></td>
+                    <th>认缴出资额(万元)</th>
+                    <td   ng-if="data.isOwnerShipFinish">
+                        {$data.ownership.amt$}
+                    </td>
+                    <td   ng-if="!data.isOwnerShipFinish"><input type="text" ng-model="data.addOwnerShip.amt"></td>
+                </tr>
+
+                <tr>
+                    <th>出资比例</th>
+                    <td   ng-if="data.isOwnerShipFinish">
+                        {$data.ownership.funded_ratio$}
+                    </td>
+                    <td   ng-if="!data.isOwnerShipFinish"><input type="text" ng-model="data.addOwnerShip.funded_ratio"></td>
+                    <th>出资日期</th>
+                    <td   ng-if="data.isOwnerShipFinish">
+                        {$data.ownership.condate$}
+                    </td>
+                    <td   ng-if="!data.isOwnerShipFinish">
+                        <date-time-picker  ng-model="data.addOwnerShip.condate" position="top-right" start=""></date-time-picker>
+                    </td>
+                </tr>
+            </table>
+            <div class="row text-center" ng-if="!data.isOwnerShipFinish">
+                <button class="btn btn-success" ng-click="action.saveOwnerShip()">完成</button>
+                <button class="btn btn-success" ng-click="action.cancelOwnerShip()">取消</button>
+            </div>-->
+            <!--股权结构-->
+            <div class="brief_list" ng-repeat="info in data.ownershipList">
+
+                <table class="table table-condensed table-bordered table_avg" >
+                    <tr>
+                        <th>股东名称</th>
+                        <td>
+                            {$info.name$}
+                        </td>
+                        <th>认缴出资额(万元)</th>
+                        <td>
+                            {$info.amt$}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>出资比例</th>
+                        <td>
+                            {$info.funded_ratio$}
+                        </td>
+                        <th>出资日期</th>
+                        <td>
+                            {$info.condate$}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!--股权结构 新增表-->
+            <table class="table table-condensed table-bordered table_avg" ng-if="!data.isOwnerShipAdd">
+                <tr>
+                    <th>股东名称</th>
+                    <td><input type="text"  ng-model="data.ownership.name"></td>
+
+                    <th>认缴出资额(万元)</th>
+                    <td><input type="text"  ng-model="data.ownership.amt"></td>
+                </tr>
+
+                <tr>
+                    <th>出资比例</th>
+                    <td><input type="text"  ng-model="data.ownership.funded_ratio"></td>
+
+                    <th>出资日期</th>
+                    <td>
+                        <!--<input type="text"  ng-model="data.ownership.condate">-->
+                        <date-time-picker  ng-model="data.ownership.condate" position="top-right" start=""></date-time-picker>
+                    </td>
+                </tr>
+
+            </table>
+            <div class="row text-center" ng-if="data.isOwnerShipAdd">
+                <button type="button" class="btn btn-success" ng-click="action.addRow1()">新增
+                </button>
+            </div>
+            <div class="row text-center" ng-if="!data.isOwnerShipAdd">
+                <button type="button" class="btn btn-success" ng-click="action.saveRow1()">保存
+                </button>
+                <button type="button" class="btn" ng-click="action.cancelRow1()">取消
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--实际控制人-->
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title"><strong>添加实际控制人</strong></h4>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table table-condensed table-bordered table_avg">
+                <tr>
+                    <th>证件号码</th>
+                    <td ng-if="data.isManagerFinish">
+                        {$data.manager.idcard$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.idcard" ng-blur="action.getAge()"></td>
+                    <th>实际控制人姓名</th>
+                    <td ng-if="data.isManagerFinish">
+                        {$data.manager.name$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.name"></td>
+                </tr>
+
+                <tr>
+                    <th>性别</th>
+                    <td ng-if="data.isManagerFinish">
+                        {$data.manager.sex$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish">
+                        <!--<input type="text" ng-model="data.addManager.sex">-->
+                        <select class="select_normal" ng-init="data.addManager.sex = data.sexNames[0]" ng-model="data.addManager.sex" ng-options="x for x in data.sexNames">
+                        </select>
+                    </td>
+                    <th>电话</th>
+                    <td  ng-if="data.isManagerFinish">
+                        {$data.manager.tel$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.tel"></td>
+                </tr>
+                <tr>
+                    <th>电子邮箱</th>
+                    <td  ng-if="data.isManagerFinish">
+                        {$data.manager.email$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.email"></td>
+                    <th>从业年限</th>
+                    <td  ng-if="data.isManagerFinish">
+                        {$data.manager.years_of_service$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.years_of_service"></td>
+                </tr>
+                <tr>
+                    <th>年龄</th>
+                    <td  ng-if="data.isManagerFinish">
+                        {$data.manager.age$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.age"></td>
+                    <th>配偶姓名</th>
+                    <td  ng-if="data.isManagerFinish">
+                        {$data.manager.spouse_name$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.spouse_name"></td>
+                </tr>
+                <tr>
+                    <th>配偶工作单位</th>
+                    <td  ng-if="data.isManagerFinish">
+                        {$data.manager.spouse_work_unit$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.spouse_work_unit"></td>
+                    <!--<th>备注</th>
+                    <td  ng-if="data.isManagerFinish">
+                        {$data.manager.remark$}
+                    </td>
+                    <td ng-if="!data.isManagerFinish"><input type="text" ng-model="data.addManager.remark"></td>-->
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td   colspan="3" ng-if="data.isManagerFinish">
+                        {$data.manager.remark$}
+                    </td>
+                    <td colspan="3" ng-if="!data.isManagerFinish">
+                        <textarea name=""  cols="95" rows="3" ng-model="data.addManager.remark"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <div class="row text-center" ng-if="!data.isManagerFinish">
+                <button class="btn btn-success" ng-click="action.saveManager()">完成</button>
+                <button class="btn" ng-click="action.cancelManager()">取消</button>
+            </div>
+            <!--从业经历-->
+            <div class="row tip_title">
+                <a
+                ><i class="fa fa-briefcase" aria-hidden="true" >从业经历</i>
+                </a>
+            </div>
+            <!--<table class="table table-condensed table-bordered table_avg" >
+                <tr>
+                    <th>开始日期</th>
+                    <td ng-if="data.isBriefFinish">
+                        {$data.brief.start_date$}
+                    </td>
+                    <td ng-if="!data.isBriefFinish">
+                        <date-time-picker  ng-model="data.addBrief.start_date" position="top-right" start=""></date-time-picker>
+                    </td>
+                    <th>结束日期</th>
+                    <td ng-if="data.isBriefFinish">
+                        {$data.brief.end_date$}
+                    </td>
+                    <td ng-if="!data.isBriefFinish">
+                        <date-time-picker  ng-model="data.addBrief.end_date" position="top-right" start="data.addBrief.start_date"></date-time-picker>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>工作单位</th>
+                    <td ng-if="data.isBriefFinish">
+                        {$data.brief.company_name$}
+                    </td>
+                    <td ng-if="!data.isBriefFinish"> <input type="text" ng-model="data.addBrief.company_name"></td>
+                    <th>职务</th>
+                    <td ng-if="data.isBriefFinish">
+                        {$data.brief.position$}
+                    </td>
+                    <td ng-if="!data.isBriefFinish"><input type="text"  ng-model="data.addBrief.position"></td>
+                </tr>
+
+            </table>
+            <div class="row text-center" ng-if="!data.isBriefFinish">
+                <button class="btn btn-success" ng-click="action.saveBrief()">完成</button>
+                <button class="btn btn-success" ng-click="action.cancelBrief()">取消</button>
+            </div>-->
+            <!--从业经历-->
+            <div class="brief_list" ng-repeat="info in data.briefList">
+                <table class="table table-condensed table-bordered table_avg" >
+                    <tr>
+                        <th>开始日期</th>
+                        <td>
+                            {$info.start_date$}
+                        </td>
+                        <th>结束日期</th>
+                        <td>
+                            {$info.end_date$}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>工作单位</th>
+                        <td>
+                            {$info.company_name$}
+                        </td>
+                        <th>职务</th>
+                        <td>
+                            {$info.position$}
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <!--从业经历 新增表-->
+            <table class="table table-condensed table-bordered table_avg" ng-if="!data.isBriefAdd">
+                <tr>
+                    <th>开始日期</th>
+                    <td>
+                        <date-time-picker  ng-model="data.brief.start_date" position="top-right" start=""></date-time-picker>
+                    </td>
+
+                    <th>结束日期</th>
+                    <td>
+                        <date-time-picker  ng-model="data.brief.end_date" position="top-right" start="data.brief.start_date"></date-time-picker>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>工作单位</th>
+                    <td><input type="text"  ng-model="data.brief.company_name"></td>
+
+                    <th>职务</th>
+                    <td><input type="text"  ng-model="data.brief.position"></td>
+                </tr>
+
+            </table>
+            <div class="row text-center" ng-if="data.isBriefAdd">
+                <button type="button" class="btn btn-success" ng-click="action.addRow2()">新增
+                </button>
+            </div>
+            <div class="row text-center" ng-if="!data.isBriefAdd">
+                <button type="button" class="btn btn-success" ng-click="action.saveRow2()">保存
+                </button>
+                <button type="button" class="btn" ng-click="action.cancelRow2()">取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

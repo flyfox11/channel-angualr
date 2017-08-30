@@ -1,0 +1,17 @@
+<!--------------------------------- 财务因素分析 ------------------------------->
+<div  style="padding: 10px 0" ng-controller="FinancialFactorsController" ng-init="initData={{data}}">
+    <div ng-switch="data.viewFlag">
+        <div ng-switch-when="0">
+            {% include "templates/report/tabs/financial_factors/financial_factors_list.html" %}
+        </div>
+        <div ng-switch-when="1">
+            {% include "templates/report/tabs/financial_factors/edit_financial_factors.html" %}
+        </div>
+        <div ng-switch-when="2">
+            {% include "templates/report/tabs/financial_factors/financial_factors_detail.html" %}
+        </div>
+        <div ng-switch-default>
+            {% include "templates/report/tabs/financial_factors/financial_factors_list.html" %}
+        </div>
+    </div>
+</div>

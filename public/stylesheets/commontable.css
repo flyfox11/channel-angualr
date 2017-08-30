@@ -1,0 +1,24 @@
+table{
+    table-layout:fixed;
+}
+tbody td{
+    overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.table>tr>th {
+    width: 10%;
+    vertical-align: center;
+}
+table tr th,td{
+    text-align: center;
+}
+.table>thead>tr>th {
+    line-height: 3;
+}
+
+/*审批意见样式*/
+.opinionLabel{
+    height: 64px;
+}
+.opinion{
+    margin-top: 10px;display: block
+}

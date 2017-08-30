@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录</title>
+    <link type='text/css' rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
+    <link type='text/css' href="/stylesheets/style.css" rel="stylesheet">
+    <script type='text/javascript' src='/javascripts/jquery.min.js'></script>
+    <!--<script type='text/javascript' src='/javascripts/login.js'></script>-->
+    <link rel="stylesheet" href="/dist/css/bootstrapValidator.css"/>
+    <script type="text/javascript" src="/dist/js/bootstrapValidator.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <!-- form: -->
+        <section>
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="page-header">
+                    <h2>注册</h2>
+                </div>
+                <form id="defaultForm" method="post" class="form-horizontal" action="/loginQuery">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">用户名</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" id="userName" name="real_name" placeholder="用户名" />
+                            <span class="help-block" id="userNameMessage" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">密码</label>
+                        <div class="col-lg-6">
+                            <input type="password" class="form-control" id="password" name="pwd" placeholder="密码" />
+                            <span class="help-block passwordMessage" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-9 col-lg-offset-3">
+                            <button type="submit" class="btn btn-primary" id="regBtn">注册</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- :form -->
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#defaultForm').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                userName: {
+                    container: '#userNameMessage',
+                    validators: {
+                        notEmpty: {
+                            message: '用户名不能为空'
+                        }
+                    }
+                },
+                password: {
+                    container: '.passwordMessage',
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能为空'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<ul id="myTab" class="nav nav-tabs">
+    <li><a href="/system/channelInfo">用户信息</a></li>
+    <!--<li><a href="/system/editUserInfo">修改信息</a></li>-->
+</ul>
+<script>
+    <%if(!!locals.showTob){%>
+    $("#myTab li").each(function () {
+        if ($(this).find('a').text() == '<%=showTob.title%>') {
+            $(this).addClass('active');
+        }
+    });
+    <%}%>
+</script>
